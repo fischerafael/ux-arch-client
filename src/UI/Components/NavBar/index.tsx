@@ -3,7 +3,10 @@ import { FlexContainer } from '../../design-system/components/layout/FlexContain
 
 export const NavBar = () => {
     return (
-        <FlexContainer as="header" style={{ height: '10vh' }}>
+        <FlexContainer
+            as="header"
+            style={{ height: '10vh', background: '#fcfcfc' }}
+        >
             <FlexContainer
                 as="nav"
                 style={{

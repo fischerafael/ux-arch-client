@@ -23,6 +23,7 @@ const global = css`
         background: ${(props) => props.theme.colors.primary};
         color: white;
         font: inherit;
+        font-weight: bold;
         font-size: 75%;
         border-radius: 0.25rem;
         cursor: pointer;
@@ -35,5 +36,9 @@ const global = css`
         &:hover {
             filter: brightness(75%);
         }
+    }
+
+    h1 {
+        font-weight: 900;
     }
 `
