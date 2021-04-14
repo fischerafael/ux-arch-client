@@ -1,12 +1,11 @@
+import styled from 'styled-components'
+
 import { OutlineButton } from '../../design-system/components/layout/Button'
 import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
 
 export const NavBar = () => {
     return (
-        <FlexContainer
-            as="header"
-            style={{ height: '10vh', background: '#fcfcfc' }}
-        >
+        <NavBarContainer as="header">
             <FlexContainer
                 as="nav"
                 style={{
@@ -28,6 +27,14 @@ export const NavBar = () => {
                     Entrar
                 </OutlineButton>
             </FlexContainer>
-        </FlexContainer>
+        </NavBarContainer>
     )
 }
+
+const NavBarContainer = styled(FlexContainer)`
+    margin-top: -10vh;
+    height: 10vh;
+    background: #fcfcfc;
+    position: fixed;
+    z-index: 10;
+`
