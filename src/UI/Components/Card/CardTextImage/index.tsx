@@ -1,7 +1,19 @@
-import { Text } from '../../../../design-system/components/display/Text'
-import { FlexContainer } from '../../../../design-system/components/layout/FlexContainer'
+import { Text } from '../../../design-system/components/display/Text'
+import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 
-export const CardHome = ({ img, cardTitle, cardDescription }) => {
+interface Props {
+    cardTitle: string
+    cardDescription: string
+    img?: string
+    url?: string
+}
+
+export const CardTextImage = ({
+    cardTitle,
+    cardDescription,
+    img,
+    url
+}: Props) => {
     return (
         <FlexContainer
             as="li"
@@ -10,14 +22,17 @@ export const CardHome = ({ img, cardTitle, cardDescription }) => {
                 background: 'white',
                 padding: '2rem',
                 alignItems: 'flex-start',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                cursor: 'pointer'
             }}
         >
-            <img
-                src={img}
-                alt={cardTitle}
-                style={{ alignSelf: 'center', padding: '2rem 0' }}
-            />
+            {img && (
+                <img
+                    src={img}
+                    alt={cardTitle}
+                    style={{ alignSelf: 'center', padding: '2rem 0' }}
+                />
+            )}
             <Text
                 as="h2"
                 style={{

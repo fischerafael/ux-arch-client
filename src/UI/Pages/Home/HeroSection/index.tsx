@@ -27,8 +27,9 @@ export const HeroSection = () => {
                         lineHeight: '1.5rem'
                     }}
                 >
-                    Projete experiências e atmosferas arquitetônicas pensadas em
-                    seus usuários.
+                    Projete experiências e atmosferas arquitetônicas pensadas
+                    específicamente para seus usuários com o auxílio de
+                    inteligência artificial.
                 </Text>
                 <DefaultButton
                     as="button"
