@@ -58,7 +58,7 @@ export const NavBar = () => {
 
 const NavBarContainer = styled(FlexContainer)`
     height: 10vh;
-    background: #fcfcfc;
+    background: #fff;
     position: fixed;
     top: 0;
     z-index: 10;
