@@ -1,4 +1,4 @@
-import { CardTextImage } from '../../Components/Card/BlogPostCard'
+// import { CardTextImage } from '../../Components/Card/BlogPostCard'
 import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
 import { ResponsiveGrid } from '../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
 
@@ -19,7 +19,7 @@ export const CardsSection = () => {
                     paddingTop: '0'
                 }}
             >
-                <CardTextImage
+                {/* <CardTextImage
                     img="/assets/icons/users.svg"
                     cardTitle="Usuários"
                     cardDescription="Os usuários avaliam atmosferas e experiências de projetos arquitetônicos e espaços existentes."
@@ -33,7 +33,7 @@ export const CardsSection = () => {
                     img="/assets/icons/ia.svg"
                     cardTitle="Inteligência artificial "
                     cardDescription="A inteligência artificial do UX Arch prevê as atmosferas dos projetos dos arquitetos com base na avaliação dos usuários."
-                />
+                /> */}
             </ResponsiveGrid>
         </FlexContainer>
     )
