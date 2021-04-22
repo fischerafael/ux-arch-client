@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Text } from '../../../design-system/components/display/Text'
-import { DefaultButton } from '../../../design-system/components/layout/Button'
-import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
+import { Text } from '../../design-system/components/display/Text'
+import { DefaultButton } from '../../design-system/components/layout/Button'
+import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
 
 export const HeroSection = () => {
     return (

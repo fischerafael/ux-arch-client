@@ -1,6 +1,6 @@
-import { CardTextImage } from '../../../Components/Card/CardTextImage'
-import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
-import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
+import { CardTextImage } from '../../Components/Card/BlogPostCard'
+import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
+import { ResponsiveGrid } from '../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
 
 export const CardsSection = () => {
     return (

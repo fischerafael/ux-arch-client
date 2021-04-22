@@ -1,12 +1,9 @@
-import Link from 'next/link'
-
 import styled from 'styled-components'
-
-import { Text } from '../../design-system/components/display/Text'
 
 import { OutlineButton } from '../../design-system/components/layout/Button'
 import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
 import { CustomLink } from '../CustomLink'
+import { Navigation } from './Navigation'
 
 export const NavBar = () => {
     return (
@@ -16,7 +13,7 @@ export const NavBar = () => {
                 style={{
                     maxWidth: '900px',
                     justifyContent: 'space-between',
-                    padding: '0 1rem'
+                    padding: '1rem'
                 }}
             >
                 <CustomLink href="/">
@@ -24,33 +21,20 @@ export const NavBar = () => {
                         as="img"
                         src="/assets/logo/logo-navbar.svg"
                         alt="UX Arch"
-                        style={{ width: '2rem' }}
+                        style={{ width: '1.5rem' }}
                     />
                 </CustomLink>
 
-                <FlexContainer
-                    as="ul"
-                    style={{
-                        margin: '0 1rem',
-                        justifyContent: 'flex-end'
-                    }}
-                >
-                    <CustomLink href="/blog">
-                        <Text
-                            as="p"
-                            style={{ fontSize: '.75rem', margin: '0 1rem' }}
-                        >
-                            Blog
-                        </Text>
-                    </CustomLink>
-                </FlexContainer>
+                <Navigation />
 
-                <OutlineButton
-                    as="button"
-                    style={{ width: '7rem', height: '2rem' }}
-                >
-                    Entrar
-                </OutlineButton>
+                <CustomLink href="/app/login">
+                    <OutlineButton
+                        as="button"
+                        style={{ width: '7rem', height: '2.5rem' }}
+                    >
+                        Entrar
+                    </OutlineButton>
+                </CustomLink>
             </FlexContainer>
         </NavBarContainer>
     )

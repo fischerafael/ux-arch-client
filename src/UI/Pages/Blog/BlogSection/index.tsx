@@ -1,4 +1,4 @@
-import { CardTextImage } from '../../../Components/Card/CardTextImage'
+import { BlogPostCard } from '../../../Components/Card/BlogPostCard'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
 
@@ -8,7 +8,7 @@ export const BlogSection = () => {
             as="main"
             style={{
                 marginTop: '10vh',
-                background: '#fcfcfc'
+                background: '#fff'
             }}
         >
             <FlexContainer
@@ -22,15 +22,18 @@ export const BlogSection = () => {
                 }}
             >
                 <ResponsiveGrid columns="2">
-                    <CardTextImage
+                    <BlogPostCard
+                        url="/"
                         cardTitle="Por que projetar atmosferas?"
                         cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
                     />
-                    <CardTextImage
+                    <BlogPostCard
+                        url="/"
                         cardTitle="Por que projetar atmosferas?"
                         cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
                     />
-                    <CardTextImage
+                    <BlogPostCard
+                        url="/"
                         cardTitle="Por que projetar atmosferas?"
                         cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
                     />

@@ -1,6 +1,4 @@
 import { NavBar } from '../../Components/NavBar'
-import { HeroSection } from './HeroSection'
-import { CardsSection } from './CardsSection'
 import { Hero } from './Hero'
 
 export const Home = () => {
@@ -8,8 +6,6 @@ export const Home = () => {
         <>
             <NavBar />
             <Hero />
-            {/* <HeroSection />
-            <CardsSection /> */}
         </>
     )
 }
