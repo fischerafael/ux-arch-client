@@ -1,8 +1,9 @@
+import { IPost } from '../../../../services/url/posts/protocol'
 import { BlogPostCard } from '../../../Components/Card/BlogPostCard'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
 
-export const BlogSection = () => {
+export const BlogSection = ({ posts }: { posts: IPost[] }) => {
     return (
         <FlexContainer
             as="main"
@@ -22,21 +23,14 @@ export const BlogSection = () => {
                 }}
             >
                 <ResponsiveGrid columns="2">
-                    <BlogPostCard
-                        url="/"
-                        cardTitle="Por que projetar atmosferas?"
-                        cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
-                    />
-                    <BlogPostCard
-                        url="/"
-                        cardTitle="Por que projetar atmosferas?"
-                        cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
-                    />
-                    <BlogPostCard
-                        url="/"
-                        cardTitle="Por que projetar atmosferas?"
-                        cardDescription="Atmosferas são importantes blabla lba s hdf us huhfuash dfhs ufhasudh fusah ufhasu dhfusad hfusahd usdhufd"
-                    />
+                    {posts.map((post) => (
+                        <BlogPostCard
+                            key={post.id}
+                            url="/"
+                            cardTitle={post.title}
+                            cardDescription={post.short_description}
+                        />
+                    ))}
                 </ResponsiveGrid>
             </FlexContainer>
         </FlexContainer>
