@@ -9,10 +9,10 @@ export const Content = () => {
             as="section"
             style={{
                 flexDirection: 'column',
-                alignItems: 'flex-start'
+                alignItems: 'flex-end'
             }}
         >
-            <Text as="h1" style={{ fontSize: '3rem' }}>
+            <Text as="h1" style={{ fontSize: '3rem', textAlign: 'end' }}>
                 UX Arch
             </Text>
             <Text
@@ -21,7 +21,8 @@ export const Content = () => {
                     fontSize: '1rem',
                     fontWeight: 'normal',
                     lineHeight: '1.5rem',
-                    margin: '2rem 0'
+                    margin: '2rem 0',
+                    textAlign: 'end'
                 }}
             >
                 Projete experiências e atmosferas arquitetônicas pensadas
