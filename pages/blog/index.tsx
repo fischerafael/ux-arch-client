@@ -1,7 +1,5 @@
 import { GetStaticProps } from 'next'
-
-import { post } from '../../src/services/url/posts'
-import { IPost } from '../../src/services/url/posts/protocol'
+import { IPost, post } from '../../src/services/url/posts'
 
 import { Blog } from '../../src/UI/Pages/Blog'
 
@@ -14,9 +12,14 @@ export default blog
 export const getStaticProps: GetStaticProps = async (context) => {
     const posts = await post.find()
 
+    const SECONDS = 60
+    const MINUTES = 60
+    const HOUR = SECONDS * MINUTES
+
     return {
         props: {
-            posts: posts
-        }
+            posts
+        },
+        revalidate: HOUR
     }
 }

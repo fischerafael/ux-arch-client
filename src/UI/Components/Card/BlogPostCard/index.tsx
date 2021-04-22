@@ -1,5 +1,6 @@
 import { Text } from '../../../design-system/components/display/Text'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
+import { CustomLink } from '../../CustomLink'
 
 interface Props {
     cardTitle: string
@@ -16,8 +17,7 @@ export const BlogPostCard = ({ cardTitle, cardDescription, url }: Props) => {
                 background: '#fafafa',
                 padding: '2rem',
                 alignItems: 'flex-start',
-                flexDirection: 'column',
-                cursor: 'pointer'
+                flexDirection: 'column'
             }}
         >
             <Text
@@ -39,18 +39,21 @@ export const BlogPostCard = ({ cardTitle, cardDescription, url }: Props) => {
             >
                 {cardDescription}
             </Text>
-            <Text
-                as="p"
-                style={{
-                    marginTop: '1rem',
-                    fontSize: '0.75rem',
-                    fontWeight: 'bold',
-                    lineHeight: '1.25rem',
-                    color: '#009AD9'
-                }}
-            >
-                Continue lendo
-            </Text>
+            <CustomLink href={url}>
+                <Text
+                    as="p"
+                    style={{
+                        marginTop: '1rem',
+                        fontSize: '0.75rem',
+                        fontWeight: 'bold',
+                        lineHeight: '1.25rem',
+                        color: '#009AD9',
+                        cursor: 'pointer'
+                    }}
+                >
+                    Continue lendo
+                </Text>
+            </CustomLink>
         </FlexContainer>
     )
 }

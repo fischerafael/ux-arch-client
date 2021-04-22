@@ -1,4 +1,4 @@
-import { IPost } from '../../../../services/url/posts/protocol'
+import { IPost } from '../../../../services/url/posts'
 import { BlogPostCard } from '../../../Components/Card/BlogPostCard'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
@@ -26,7 +26,7 @@ export const BlogSection = ({ posts }: { posts: IPost[] }) => {
                     {posts.map((post) => (
                         <BlogPostCard
                             key={post.id}
-                            url="/"
+                            url={`/blog/${post.slug}`}
                             cardTitle={post.title}
                             cardDescription={post.short_description}
                         />
