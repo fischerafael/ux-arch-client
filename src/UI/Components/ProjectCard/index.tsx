@@ -1,9 +1,11 @@
 import React from 'react'
-import { Text } from '../../design-system/components/display/Text'
-import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
+import { IProject, IProjectUses } from '../../../services/url/projects'
 import { colors } from '../../design-system/styles/Theme'
 
-export const ProjectCard = () => {
+import { Text } from '../../design-system/components/display/Text'
+import { FlexContainer } from '../../design-system/components/layout/FlexContainer'
+
+export const ProjectCard = ({ project }: { project: IProject }) => {
     return (
         <FlexContainer
             as="article"
@@ -13,24 +15,24 @@ export const ProjectCard = () => {
                 flexDirection: 'column'
             }}
         >
-            <CardHeader
-                title="Villa Savoye"
-                imgUrl="https://teturaarqui.files.wordpress.com/2010/10/1288061919-villa-savoye-4-1000x664.jpg"
-            />
-            <CardBody />
+            <CardHeader title={project.name} imgUrl={project.thumbnail} />
+            <CardTags projectUses={project.project_uses} />
+            <CardBody name={project.name} location={project.location} />
+            <CardFooter />
         </FlexContainer>
     )
 }
 
 const CardHeader = ({ title, imgUrl }) => {
     return (
-        <FlexContainer as="header">
+        <FlexContainer as="section">
             <FlexContainer
                 as="img"
                 src={imgUrl}
                 alt={title}
                 style={{
                     borderRadius: '0.5rem 0.5rem 0 0',
+                    height: '10rem',
                     objectFit: 'cover'
                 }}
             />
@@ -38,10 +40,42 @@ const CardHeader = ({ title, imgUrl }) => {
     )
 }
 
-const CardBody = () => {
+const CardTags = ({ projectUses }: { projectUses: IProjectUses[] }) => {
     return (
         <FlexContainer
-            as="body"
+            as="section"
+            style={{
+                justifyContent: 'flex-start',
+                flexWrap: 'wrap',
+                padding: '0 1rem',
+                paddingTop: '.5rem'
+            }}
+        >
+            {projectUses.map((projectUse) => (
+                <Text
+                    key={projectUse.id}
+                    as="span"
+                    style={{
+                        padding: '.25rem',
+                        background: `${colors.grey}`,
+                        borderRadius: '.5rem',
+                        fontSize: '.5rem',
+                        margin: '.125rem',
+                        marginLeft: '0',
+                        color: 'white'
+                    }}
+                >
+                    {projectUse.title}
+                </Text>
+            ))}
+        </FlexContainer>
+    )
+}
+
+const CardBody = ({ name, location }) => {
+    return (
+        <FlexContainer
+            as="section"
             style={{
                 padding: '1rem',
                 alignItems: 'flex-start',
@@ -56,7 +90,7 @@ const CardBody = () => {
                     lineHeight: '1rem'
                 }}
             >
-                Villa Savoye
+                {name}
             </Text>
             <Text
                 as="p"
@@ -66,7 +100,32 @@ const CardBody = () => {
                     lineHeight: '1rem'
                 }}
             >
-                Poissy, França
+                {location}
+            </Text>
+        </FlexContainer>
+    )
+}
+
+const CardFooter = () => {
+    return (
+        <FlexContainer
+            as="section"
+            style={{
+                padding: '1rem',
+                borderTop: `solid .05rem ${colors.grey}`,
+                justifyContent: 'flex-end'
+            }}
+        >
+            <Text
+                as="p"
+                style={{
+                    textAlign: 'start',
+                    fontSize: '.6rem',
+                    cursor: 'pointer',
+                    color: `${colors.primary}`
+                }}
+            >
+                ver mais
             </Text>
         </FlexContainer>
     )

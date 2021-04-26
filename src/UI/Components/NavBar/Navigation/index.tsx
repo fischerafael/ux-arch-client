@@ -18,6 +18,11 @@ export const Navigation = () => {
                     Atmosferas
                 </Text>
             </CustomLink> */}
+            <CustomLink href="/atmospheres">
+                <Text as="p" style={{ fontSize: '.75rem', margin: '0 1rem' }}>
+                    Atmosferas
+                </Text>
+            </CustomLink>
             <CustomLink href="/blog">
                 <Text as="p" style={{ fontSize: '.75rem', margin: '0 1rem' }}>
                     Blog

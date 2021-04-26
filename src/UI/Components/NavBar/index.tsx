@@ -27,14 +27,14 @@ export const NavBar = () => {
 
                 <Navigation />
 
-                <CustomLink href="/app/login">
+                {/* <CustomLink href="/app/login">
                     <OutlineButton
                         as="button"
                         style={{ width: '7rem', height: '2.5rem' }}
                     >
                         Entrar
                     </OutlineButton>
-                </CustomLink>
+                </CustomLink> */}
             </FlexContainer>
         </NavBarContainer>
     )

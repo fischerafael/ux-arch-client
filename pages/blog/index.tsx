@@ -13,13 +13,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const posts = await post.find()
 
     const SECONDS = 60
-    const MINUTES = 60
-    const HOUR = SECONDS * MINUTES
+    const MINUTES = 30
+    const HALF_AN_HOUR = SECONDS * MINUTES
 
     return {
         props: {
             posts
         },
-        revalidate: HOUR
+        revalidate: HALF_AN_HOUR
     }
 }

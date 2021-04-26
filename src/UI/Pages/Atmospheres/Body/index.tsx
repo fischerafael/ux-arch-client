@@ -1,11 +1,11 @@
-import React from 'react'
+import { IProject } from '../../../../services/url/projects'
 import { width } from '../../../design-system/styles/Theme'
 
 import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 import { ProjectCard } from '../../../Components/ProjectCard'
 
-export const AtmospheresBody = () => {
+export const AtmospheresBody = ({ projects }: { projects: IProject[] }) => {
     return (
         <FlexContainer
             as="main"
@@ -14,12 +14,9 @@ export const AtmospheresBody = () => {
             }}
         >
             <ResponsiveGrid as="section" style={{ maxWidth: `${width.lg}` }}>
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
-
-                <ProjectCard />
-                <ProjectCard />
+                {projects.map((project) => (
+                    <ProjectCard key={project.id} project={project} />
+                ))}
             </ResponsiveGrid>
         </FlexContainer>
     )
