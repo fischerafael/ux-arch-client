@@ -3,4 +3,4 @@ const BASE_URL = {
     production: 'https://ux-arch-strapi.herokuapp.com'
 }
 
-export const API_URL = BASE_URL.dev
+export const API_URL = BASE_URL.production
