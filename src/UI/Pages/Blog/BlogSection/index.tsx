@@ -1,4 +1,4 @@
-import { IPost } from '../../../../services/url/posts'
+import { IPost } from '../../../../entities/post'
 import { BlogPostCard } from '../../../Components/Card/BlogPostCard'
 import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
 import { ResponsiveGrid } from '../../../design-system/components/layout/GridContainer/ResponsiveGridContainer'
