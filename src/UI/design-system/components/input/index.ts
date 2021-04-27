@@ -14,7 +14,6 @@ const DisabledButton = css`
     background: ${colors.grey};
     cursor: not-allowed;
 `
-
 export const TextInput = styled.input`
     width: 100%;
     outline: none;
@@ -28,4 +27,10 @@ export const TextInput = styled.input`
         color: ${colors.grey};
         font-weight: lighter;
     }
+`
+export const AnchorLink = styled.a`
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: ${colors.primary};
+    text-align: center;
 `
