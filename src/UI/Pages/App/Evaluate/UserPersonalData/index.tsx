@@ -24,9 +24,24 @@ export const UserPersonalData = () => {
                 Prometo que só levará alguns segundos!
             </Paragraph>
 
-            <FormTextInput label="Nome" placeholder="Ex: Rafael Fischer" />
-            <FormTextInput label="Email" placeholder="Ex: rafael@gmail.com" />
             <FormTextInput
+                id="name"
+                value=""
+                handleChange={() => {}}
+                label="Nome"
+                placeholder="Ex: Rafael Fischer"
+            />
+            <FormTextInput
+                id="email"
+                value=""
+                handleChange={() => {}}
+                label="Email"
+                placeholder="Ex: rafael@gmail.com"
+            />
+            <FormTextInput
+                id="password"
+                value=""
+                handleChange={() => {}}
                 label="Senha"
                 type="password"
                 error="6 caracteres no mínimo"
