@@ -34,7 +34,7 @@ const global = css`
         justify-content: center;
         outline: none;
         &:hover {
-            filter: brightness(75%);
+            background: ${(props) => props.theme.colors.grey};
         }
     }
 

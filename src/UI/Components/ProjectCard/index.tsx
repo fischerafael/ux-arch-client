@@ -10,15 +10,15 @@ export const ProjectCard = ({ project }: { project: IProject }) => {
         <FlexContainer
             as="article"
             style={{
-                border: `solid .05rem ${colors.grey}`,
                 borderRadius: '.5rem',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                background: `${colors.lightGrey}`
             }}
         >
             <CardHeader title={project.name} imgUrl={project.thumbnail} />
             <CardTags projectUses={project.project_uses} />
             <CardBody name={project.name} location={project.location} />
-            <CardFooter />
+            {/* <CardFooter /> */}
         </FlexContainer>
     )
 }
@@ -112,7 +112,7 @@ const CardFooter = () => {
             as="section"
             style={{
                 padding: '1rem',
-                borderTop: `solid .05rem ${colors.grey}`,
+                borderTop: `solid .1rem ${colors.light}`,
                 justifyContent: 'flex-end'
             }}
         >
@@ -120,12 +120,13 @@ const CardFooter = () => {
                 as="p"
                 style={{
                     textAlign: 'start',
+                    fontWeight: 'bold',
                     fontSize: '.6rem',
                     cursor: 'pointer',
                     color: `${colors.primary}`
                 }}
             >
-                ver mais
+                ver detalhes
             </Text>
         </FlexContainer>
     )

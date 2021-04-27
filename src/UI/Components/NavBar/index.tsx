@@ -7,13 +7,12 @@ import { Navigation } from './Navigation'
 
 export const NavBar = () => {
     return (
-        <NavBarContainer as="header">
+        <NavBarContainer as="header" style={{ padding: '0 1rem' }}>
             <FlexContainer
                 as="nav"
                 style={{
                     maxWidth: '900px',
-                    justifyContent: 'space-between',
-                    padding: '1rem'
+                    justifyContent: 'space-between'
                 }}
             >
                 <CustomLink href="/">
@@ -27,14 +26,14 @@ export const NavBar = () => {
 
                 <Navigation />
 
-                {/* <CustomLink href="/app/login">
+                <CustomLink href="/app/login">
                     <OutlineButton
                         as="button"
                         style={{ width: '7rem', height: '2.5rem' }}
                     >
                         Entrar
                     </OutlineButton>
-                </CustomLink> */}
+                </CustomLink>
             </FlexContainer>
         </NavBarContainer>
     )

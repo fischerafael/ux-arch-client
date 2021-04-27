@@ -1,20 +1,20 @@
 import React from 'react'
 import { Text } from '../../../design-system/components/display/Text'
 
-const DoubleLine = ({ firstLine, secondLine }) => {
+export const DoubleLine = ({ firstLine, secondLine }) => {
     return (
         <>
             <Text
                 as="h2"
                 style={{
-                    fontSize: '1.5rem',
-                    fontWeight: 'normal',
-                    lineHeight: '2rem'
+                    fontSize: '1rem',
+                    lineHeight: '1rem',
+                    fontWeight: 'normal'
                 }}
             >
                 {firstLine}
             </Text>
-            <Text as="h2" style={{ fontSize: '1.5rem', lineHeight: '2rem' }}>
+            <Text as="h2" style={{ fontSize: '1rem', lineHeight: '1.5rem' }}>
                 {secondLine}
             </Text>
         </>

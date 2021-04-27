@@ -1,9 +1,17 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
 import { Text } from '../../../../design-system/components/display/Text'
+import { DefaultButton } from '../../../../design-system/components/input'
 import { FlexContainer } from '../../../../design-system/components/layout/FlexContainer'
 
 export const Content = () => {
+    const router = useRouter()
+
+    const handleNavigateToEvaluation = () => {
+        router.push('/app/evaluate')
+    }
+
     return (
         <FlexContainer
             as="section"
@@ -30,10 +38,17 @@ export const Content = () => {
                 artificial.
             </Text>
             <FlexContainer
-                as="button"
-                style={{ height: '3rem', maxWidth: '10rem' }}
+                style={{
+                    height: '4rem',
+                    justifyContent: 'flex-end',
+                    flexWrap: 'wrap',
+                    gap: '.5rem'
+                }}
             >
-                Projetar
+                <DefaultButton onClick={handleNavigateToEvaluation}>
+                    Avaliar
+                </DefaultButton>
+                <DefaultButton disabled>Projetar</DefaultButton>
             </FlexContainer>
         </FlexContainer>
     )

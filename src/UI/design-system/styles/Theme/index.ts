@@ -8,7 +8,10 @@ export const width = {
 
 export const colors = {
     primary: '#009AD9',
-    grey: '#ccc'
+    grey: '#ccc',
+    lightGrey: '#fafafa',
+    light: '#fff',
+    atention: '#ccc'
 }
 
 export const theme = {
