@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next'
+
 import { IPost } from '../../src/entities/post'
 import { postService } from '../../src/usecases/services/post'
 
@@ -10,7 +11,7 @@ const blog = ({ posts }: { posts: IPost[] }) => {
 
 export default blog
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps = async () => {
     const posts = await postService.find()
 
     const SECONDS = 60
