@@ -1,7 +1,8 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-import { IPost, post } from '../../../src/services/url/posts'
+import { IPost } from '../../../src/entities/post'
+import { postService } from '../../../src/usecases/services/post'
 
 import { BlogPost } from '../../../src/UI/Pages/BlogPost'
 import { LoadingPage } from '../../../src/UI/Pages/LoadingPage'
@@ -20,7 +21,7 @@ const index = ({ postData }: { postData: IPost }) => {
 export default index
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
-    const posts = await post.find()
+    const posts = await postService.find()
     const paths = posts.map((post) => {
         return {
             params: {
@@ -37,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const slug = context.params.slug
-    const postData = await post.findOne(slug as string)
+    const postData = await postService.findBySlug(slug as string)
 
     if (!postData[0]) {
         return {
