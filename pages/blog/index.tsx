@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next'
 import { IPost } from '../../src/entities/post'
 import { postService } from '../../src/usecases/services/post'
-import { post } from '../../src/services/url/posts'
 
 import { Blog } from '../../src/UI/Pages/Blog'
 
