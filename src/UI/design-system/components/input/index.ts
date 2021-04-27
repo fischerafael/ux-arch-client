@@ -28,9 +28,8 @@ export const TextInput = styled.input`
         font-weight: lighter;
     }
 `
-export const AnchorLink = styled.a`
+export const AnchorLink = styled.span`
     font-size: 0.75rem;
-    font-weight: bold;
     color: ${colors.primary};
     text-align: center;
 `

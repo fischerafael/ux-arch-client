@@ -6,6 +6,9 @@ import { FlexContainer } from '../../../design-system/components/layout/FlexCont
 
 interface Props {
     label: string
+    id: string
+    handleChange(e: any): void
+    value: any
     placeholder?: string
     error?: string
     [x: string]: any
@@ -15,6 +18,9 @@ export const FormTextInput = ({
     label,
     placeholder,
     error,
+    id,
+    handleChange,
+    value,
     ...rest
 }: Props) => {
     return (
@@ -33,7 +39,13 @@ export const FormTextInput = ({
                 <Label>{label}</Label>
                 <Label style={{ color: colors.atention }}>{error}</Label>
             </FlexContainer>
-            <TextInput placeholder={placeholder} {...rest} />
+            <TextInput
+                placeholder={placeholder}
+                id={id}
+                value={value}
+                onChange={handleChange}
+                {...rest}
+            />
         </FlexContainer>
     )
 }

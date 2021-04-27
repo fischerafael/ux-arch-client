@@ -1,17 +1,53 @@
-import React from 'react'
-import { width } from '../../../design-system/styles/Theme'
-import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
-import { DoubleLine } from '../../../Components/Text/DoubleLine'
-import { FormTextInput } from '../../../Components/Input/FormTextInput'
+import { useForm } from '../../../../hooks/useForm'
+import { userServices } from '../../../../usecases/services/user'
+
 import {
     AnchorLink,
     DefaultButton
 } from '../../../design-system/components/input'
+import { width } from '../../../design-system/styles/Theme'
+import { FlexContainer } from '../../../design-system/components/layout/FlexContainer'
+
 import { ClickableLogo } from '../../../Components/ClickableLogo'
-import { Paragraph } from '../../../design-system/components/display/Text'
 import { CustomLink } from '../../../Components/CustomLink'
 
+import { RegisterForm } from './RegisterForm'
+import { useEffect, useState } from 'react'
+
 export const Register = () => {
+    const { data, handleDataChange } = useForm({
+        name: '',
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const handleRegister = async (e: any) => {
+        e.preventDefault()
+        try {
+            const response = await userServices.create(data)
+            console.log('CREATE USER RESPONSE', response)
+        } catch (error) {
+            alert(error.message)
+            console.log('CREATE USER RESPONSE', error.message)
+        }
+    }
+
+    const [isFormValid, setFormValid] = useState(false)
+
+    useEffect(() => {
+        if (
+            data.name.length >= 3 &&
+            data.username.length >= 3 &&
+            data.email.length >= 5 &&
+            data.password.length >= 6
+        ) {
+            setFormValid(true)
+            return
+        }
+        setFormValid(false)
+    }, [data])
+
     return (
         <FlexContainer as="main">
             <FlexContainer
@@ -27,32 +63,18 @@ export const Register = () => {
                 <FlexContainer>
                     <ClickableLogo />
                 </FlexContainer>
-                <br />
-                <DoubleLine firstLine="Olá" secondLine="Seja bem-vindo!" />
-                <br />
-                <Paragraph style={{}}>
-                    Informe seu nome, email e uma senha para poder acessar o UX
-                    Arch novamente no futuro.
-                </Paragraph>
-                <br />
-                <FormTextInput label="Nome" placeholder="Ex: Rafael Fischer" />
-                <FormTextInput
-                    label="Email"
-                    placeholder="Ex: rafael@gmail.com"
-                />
-                <FormTextInput
-                    label="Senha"
-                    type="password"
-                    error="6 caracteres no mínimo"
-                />
-                <br />
+
+                <RegisterForm data={data} handleChange={handleDataChange} />
+
                 <DefaultButton
-                    style={{ margin: '1rem 0', alignSelf: 'flex-end' }}
-                    onClick={() => {}}
+                    style={{ margin: '1rem 0', alignSelf: 'center' }}
+                    onClick={handleRegister}
+                    disabled={isFormValid ? false : true}
                 >
-                    Projetar
+                    Criar Conta
                 </DefaultButton>
-                <FlexContainer style={{ marginTop: '1rem' }}>
+
+                <FlexContainer>
                     <CustomLink href="/app/login">
                         <AnchorLink>Já sou cadastrado</AnchorLink>
                     </CustomLink>
