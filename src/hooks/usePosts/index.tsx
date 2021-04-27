@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { IPost } from '../../services/url/posts'
+import { IPost } from '../../entities/post'
 
 interface Props {
     posts: IPost[]
