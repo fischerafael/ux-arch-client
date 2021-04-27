@@ -1,4 +1,4 @@
-import { IPost } from '../../../services/url/posts'
+import { IPost } from '../../../entities/post'
 
 import { NavBar } from '../../Components/NavBar'
 import { PostContent } from './PostContent'
