@@ -1,19 +1,19 @@
 export const width = {
-    xl: '1024px',
-    lg: '900px',
-    md: '680px',
-    sm: '480px',
-    xs: '360px'
+    large: '900px',
+    medium: '600px',
+    small: '480px'
 }
 
 export const colors = {
     primary: '#009AD9',
-    grey: '#ccc',
+    main: '#333333',
+    contrast: '#ffffff',
     lightGrey: '#fafafa',
     light: '#fff',
     atention: '#ccc'
 }
 
 export const Theme = {
-    colors
+    colors,
+    width
 }
