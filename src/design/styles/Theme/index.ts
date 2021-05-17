@@ -14,6 +14,6 @@ export const colors = {
     atention: '#ccc'
 }
 
-export const theme = {
+export const Theme = {
     colors
 }

@@ -1,5 +1,3 @@
-import { Home } from '../src/UI/Pages/Home'
-
 export default function index() {
-    return <Home />
+    return <h1>oi mundo</h1>
 }

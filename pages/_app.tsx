@@ -1,18 +1,14 @@
 import { ThemeProvider } from 'styled-components'
 
-import { GlobalStyle } from '../src/UI/design-system/styles/GlobalStyle'
-import { theme } from '../src/UI/design-system/styles/Theme'
-
-import { PostsProvider } from '../src/hooks/usePosts'
+import { GlobalStyle } from '../src/design/styles/GlobalStyle'
+import { Theme } from '../src/design/styles/Theme'
 
 export default function App({ Component, pageProps }) {
     return (
         <>
-            <ThemeProvider theme={theme}>
-                <PostsProvider>
-                    <GlobalStyle />
-                    <Component {...pageProps} />
-                </PostsProvider>
+            <ThemeProvider theme={Theme}>
+                <GlobalStyle />
+                <Component {...pageProps} />
             </ThemeProvider>
         </>
     )
