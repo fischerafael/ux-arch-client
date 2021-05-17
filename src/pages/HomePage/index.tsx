@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { DisplayImage } from '../../design/components/display'
 import {
-    InputDefaultButtonContrast,
-    InputGhostButton
-} from '../../design/components/input'
+    ButtonDefaultContrast,
+    ButtonGhost
+} from '../../design/components/button'
 import { LayoutFlex } from '../../design/components/layout'
-import { SubTitle, Title } from '../../design/components/text'
+import { TextSubTitle, TextTitle } from '../../design/components/text'
 
 export const HomePage = () => {
     return (
@@ -21,15 +21,13 @@ export const HomePage = () => {
                 </LayoutNavBarContent>
             </LayoutNavBar>
             <LayoutMain>
-                <TextTitle>UX ARCH</TextTitle>
-                <TextSubTitle>
+                <TextTitleHomePage>UX ARCH</TextTitleHomePage>
+                <TextSubTitleHomePage>
                     Projete experiências e atmosferas arquitetônicas pensadas
                     específicamente em seus usuários com o auxílio de
                     inteligência artificial.
-                </TextSubTitle>
-                <InputDefaultButtonContrast>
-                    PROJETAR
-                </InputDefaultButtonContrast>
+                </TextSubTitleHomePage>
+                <ButtonDefaultContrast>PROJETAR</ButtonDefaultContrast>
             </LayoutMain>
         </LayoutHeroSection>
     )
@@ -58,7 +56,7 @@ const LayoutNavBarContent = styled(LayoutFlex)`
 const DisplayImageLogo = styled(DisplayImage)`
     height: 1rem;
 `
-const InputGhostButtonNavBar = styled(InputGhostButton)`
+const InputGhostButtonNavBar = styled(ButtonGhost)`
     padding: 0rem;
 `
 const LayoutMain = styled(LayoutFlex)`
@@ -67,7 +65,7 @@ const LayoutMain = styled(LayoutFlex)`
     flex-direction: column;
     padding: 0 1rem;
 `
-const TextTitle = styled(Title)`
+const TextTitleHomePage = styled(TextTitle)`
     color: ${(props) => props.theme.colors.contrast};
     font-size: 5rem;
     letter-spacing: 0.5rem;
@@ -75,7 +73,7 @@ const TextTitle = styled(Title)`
     text-align: center;
     margin-bottom: 2rem;
 `
-const TextSubTitle = styled(SubTitle)`
+const TextSubTitleHomePage = styled(TextSubTitle)`
     text-align: center;
     margin-bottom: 2rem;
     color: ${(props) => props.theme.colors.contrast};

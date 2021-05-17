@@ -14,6 +14,10 @@ const global = css`
         font-family: 'Poppins', Arial, Helvetica, sans-serif;
         line-height: 1;
         font-size: 100%;
-        color: #333;
+        color: ${(props) => props.theme.colors.main};
+    }
+
+    ::placeholder {
+        color: ${(props) => props.theme.colors.grey};
     }
 `

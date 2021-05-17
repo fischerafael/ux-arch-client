@@ -1,0 +1,236 @@
+import React, { useState } from 'react'
+
+import { InputText } from '../../design/components/input'
+import { LayoutFlex } from '../../design/components/layout'
+import {
+    AnchorText,
+    TextLabel,
+    TextParagraph,
+    TextSubTitle
+} from '../../design/components/text'
+import { ButtonDefault } from '../../design/components/button'
+
+export const AppPage = () => {
+    const [appPage, setAppPage] = useState('login')
+
+    const handleSwitchPage = () => {
+        if (appPage === 'register') setAppPage('login')
+        if (appPage === 'login') setAppPage('register')
+    }
+
+    const [loginIdentifier, setLoginIdentifier] = useState('')
+    const [loginPassword, setLoginPassword] = useState('')
+
+    const loginData = {
+        identifier: loginIdentifier,
+        password: loginPassword
+    }
+
+    console.log('LOGIN DATA', loginData)
+
+    const handleLogin = (e: any) => {
+        e.preventDefault()
+        try {
+        } catch (error) {
+            console.log(error)
+        }
+        alert('login')
+    }
+
+    const [registerName, setRegisterName] = useState('')
+    const [registerUsername, setRegisterUsername] = useState('')
+    const [registerEmail, setRegisterEmail] = useState('')
+    const [registerPassword, setRegisterPassword] = useState('')
+
+    const registerData = {
+        name: registerName,
+        username: registerUsername,
+        email: registerEmail,
+        password: registerPassword
+    }
+
+    console.log('REGISTER DATA', registerData)
+
+    const handleRegister = (e: any) => {
+        e.preventDefault()
+        alert('register')
+    }
+
+    return (
+        <LayoutFlex as="main" style={{ width: '100%', minHeight: '100vh' }}>
+            {appPage === 'login' && (
+                <LayoutFlex
+                    as="section"
+                    style={{
+                        flexDirection: 'column',
+                        gap: '1rem',
+                        padding: '1rem'
+                    }}
+                >
+                    <LayoutFlex
+                        as="img"
+                        src="/assets/logo-dark.svg"
+                        alt="Logo Dark"
+                        style={{ maxWidth: '4rem' }}
+                    />
+
+                    <TextSubTitle>
+                        Olá! Faça o login para continuar.
+                    </TextSubTitle>
+
+                    <LayoutFlex
+                        as="form"
+                        style={{
+                            width: '100%',
+                            flexDirection: 'column',
+                            gap: '.5rem'
+                        }}
+                    >
+                        <TextLabel>
+                            Email ou Usuário
+                            <InputText
+                                type="text"
+                                placeholder="ex: rafael@gmail.com"
+                                value={loginIdentifier}
+                                onChange={(e) =>
+                                    setLoginIdentifier(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <TextLabel>
+                            Senha
+                            <InputText
+                                type="password"
+                                placeholder="Min. 6 caracteres"
+                                value={loginPassword}
+                                onChange={(e) =>
+                                    setLoginPassword(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <ButtonDefault
+                            style={{ marginTop: '.5rem' }}
+                            onClick={handleLogin}
+                        >
+                            Entrar
+                        </ButtonDefault>
+
+                        <LayoutFlex
+                            style={{
+                                width: '100%',
+                                gap: '.25rem',
+                                marginTop: '1rem'
+                            }}
+                        >
+                            <TextParagraph>Novo no Ux Arch?</TextParagraph>
+                            <AnchorText onClick={handleSwitchPage}>
+                                Cadastre-se
+                            </AnchorText>
+                        </LayoutFlex>
+                    </LayoutFlex>
+                </LayoutFlex>
+            )}
+
+            {appPage === 'register' && (
+                <LayoutFlex
+                    as="section"
+                    style={{
+                        flexDirection: 'column',
+                        gap: '1rem',
+                        padding: '1rem'
+                    }}
+                >
+                    <LayoutFlex
+                        as="img"
+                        src="/assets/logo-dark.svg"
+                        alt="Logo Dark"
+                        style={{ maxWidth: '4rem' }}
+                    />
+
+                    <TextSubTitle>
+                        Olá! Cadastre-se para continuar.
+                    </TextSubTitle>
+
+                    <LayoutFlex
+                        as="form"
+                        style={{
+                            width: '100%',
+                            flexDirection: 'column',
+                            gap: '.5rem'
+                        }}
+                    >
+                        <TextLabel>
+                            Nome
+                            <InputText
+                                type="text"
+                                placeholder="ex: Rafael Fischer"
+                                value={registerName}
+                                onChange={(e) =>
+                                    setRegisterName(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <TextLabel>
+                            Usuário
+                            <InputText
+                                type="text"
+                                placeholder="ex: rafael"
+                                value={registerUsername}
+                                onChange={(e) =>
+                                    setRegisterUsername(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <TextLabel>
+                            Email
+                            <InputText
+                                type="email"
+                                placeholder="ex: rafael@gmail.com"
+                                value={registerEmail}
+                                onChange={(e) =>
+                                    setRegisterEmail(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <TextLabel>
+                            Senha
+                            <InputText
+                                type="password"
+                                placeholder="Min. 6 caracteres"
+                                value={registerPassword}
+                                onChange={(e) =>
+                                    setRegisterPassword(e.target.value)
+                                }
+                            />
+                        </TextLabel>
+
+                        <ButtonDefault
+                            style={{ marginTop: '.5rem' }}
+                            onClick={handleRegister}
+                        >
+                            Finalizar
+                        </ButtonDefault>
+
+                        <LayoutFlex
+                            style={{
+                                width: '100%',
+                                gap: '.25rem',
+                                marginTop: '1rem'
+                            }}
+                        >
+                            <TextParagraph>Já é cadastrado?</TextParagraph>
+                            <AnchorText onClick={handleSwitchPage}>
+                                Entre
+                            </AnchorText>
+                        </LayoutFlex>
+                    </LayoutFlex>
+                </LayoutFlex>
+            )}
+        </LayoutFlex>
+    )
+}
