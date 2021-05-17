@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Router from 'next/router'
 
 import { InputText } from '../../design/components/input'
 import { LayoutFlex } from '../../design/components/layout'
@@ -9,8 +10,15 @@ import {
     TextSubTitle
 } from '../../design/components/text'
 import { ButtonDefault } from '../../design/components/button'
+import { api } from '../../services/config/api'
+import { useCredentials } from '../../context/CredentialsContext'
 
 export const AppPage = () => {
+    // const { push } = useRouter()
+    const { credentials, setCredentials } = useCredentials()
+
+    console.log('CREDENTIALS', credentials)
+
     const [appPage, setAppPage] = useState('login')
 
     const handleSwitchPage = () => {
@@ -26,15 +34,28 @@ export const AppPage = () => {
         password: loginPassword
     }
 
-    console.log('LOGIN DATA', loginData)
+    // console.log('LOGIN DATA', loginData)
 
-    const handleLogin = (e: any) => {
+    const handleLogin = async (e: any) => {
         e.preventDefault()
+        setAppPage('loading')
         try {
+            const { data } = await api.post('/auth/local', loginData)
+            setCredentials({
+                email: data.user.email,
+                id: data.user.id,
+                status: data.user.status,
+                username: data.user.username,
+                jwt: data.jwt
+            })
+            Router.push('/app/dashboard')
         } catch (error) {
-            console.log(error)
+            console.log('LOGIN ERROR', error)
+        } finally {
+            setAppPage('login')
+            setLoginIdentifier('')
+            setLoginPassword('')
         }
-        alert('login')
     }
 
     const [registerName, setRegisterName] = useState('')
@@ -49,7 +70,7 @@ export const AppPage = () => {
         password: registerPassword
     }
 
-    console.log('REGISTER DATA', registerData)
+    // console.log('REGISTER DATA', registerData)
 
     const handleRegister = (e: any) => {
         e.preventDefault()
@@ -231,6 +252,8 @@ export const AppPage = () => {
                     </LayoutFlex>
                 </LayoutFlex>
             )}
+
+            {appPage === 'loading' && <LayoutFlex>Carregando...</LayoutFlex>}
         </LayoutFlex>
     )
 }
