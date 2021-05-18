@@ -4,4 +4,5 @@ export interface ICredentials {
     email: string
     status: string
     id: string
+    name: string
 }

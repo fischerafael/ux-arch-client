@@ -48,7 +48,8 @@ export const LoginRegisterPage = () => {
                 id: data.user.id,
                 status: data.user.status,
                 username: data.user.username,
-                jwt: data.jwt
+                jwt: data.jwt,
+                name: data.user.name
             })
             Router.push('/app/dashboard')
         } catch (error) {
@@ -88,7 +89,8 @@ export const LoginRegisterPage = () => {
                 id: data.user.id,
                 status: data.user.status,
                 username: data.user.username,
-                jwt: data.jwt
+                jwt: data.jwt,
+                name: data.user.name
             })
             Router.push('/app/dashboard')
         } catch (error) {
