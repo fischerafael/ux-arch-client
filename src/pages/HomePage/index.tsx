@@ -27,7 +27,9 @@ export const HomePage = () => {
                     específicamente em seus usuários com o auxílio de
                     inteligência artificial.
                 </TextSubTitleHomePage>
-                <ButtonDefaultContrast>PROJETAR</ButtonDefaultContrast>
+                <ButtonDefaultContrast style={{ maxWidth: '10rem' }}>
+                    PROJETAR
+                </ButtonDefaultContrast>
             </LayoutMain>
         </LayoutHeroSection>
     )
@@ -58,6 +60,8 @@ const DisplayImageLogo = styled(DisplayImage)`
 `
 const InputGhostButtonNavBar = styled(ButtonGhost)`
     padding: 0rem;
+    max-width: 5rem;
+    justify-content: flex-end;
 `
 const LayoutMain = styled(LayoutFlex)`
     width: 100%;
