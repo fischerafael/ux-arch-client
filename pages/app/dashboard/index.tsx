@@ -6,19 +6,11 @@ import { DashboardPage } from '../../../src/pages/App/Dashboard'
 import { api } from '../../../src/services/config/api'
 
 interface Props {
-    credentials: ICredentials
     referenceProjects: IProjects
 }
 
-const index = ({ credentials, referenceProjects }: Props) => {
-    console.log('CREDENTIALS - GET SERVER SIDE PROPS', credentials)
-
-    return (
-        <DashboardPage
-            referenceProjects={referenceProjects}
-            credentials={credentials}
-        />
-    )
+const index = ({ referenceProjects }: Props) => {
+    return <DashboardPage referenceProjects={referenceProjects} />
 }
 
 export default index
@@ -41,7 +33,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 
     return {
         props: {
-            credentials: parsedCredentials,
             referenceProjects: referenceProjects
         }
     }
