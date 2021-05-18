@@ -1,4 +1,5 @@
 import React from 'react'
+import Router from 'next/router'
 import styled from 'styled-components'
 import { DisplayImage } from '../../design/components/display'
 import {
@@ -9,6 +10,14 @@ import { LayoutFlex } from '../../design/components/layout'
 import { TextSubTitle, TextTitle } from '../../design/components/text'
 
 export const HomePage = () => {
+    const handleNavigateToLogin = () => {
+        Router.push(`/app?state=login`)
+    }
+
+    const handleNavigateToRegister = () => {
+        Router.push(`/app?state=register`)
+    }
+
     return (
         <LayoutHeroSection>
             <LayoutNavBar>
@@ -17,7 +26,9 @@ export const HomePage = () => {
                         src="/assets/logo-white.svg"
                         alt="Logo UX Arch"
                     />
-                    <InputGhostButtonNavBar>ENTRAR</InputGhostButtonNavBar>
+                    <InputGhostButtonNavBar onClick={handleNavigateToLogin}>
+                        ENTRAR
+                    </InputGhostButtonNavBar>
                 </LayoutNavBarContent>
             </LayoutNavBar>
             <LayoutMain>
@@ -27,7 +38,10 @@ export const HomePage = () => {
                     específicamente em seus usuários com o auxílio de
                     inteligência artificial.
                 </TextSubTitleHomePage>
-                <ButtonDefaultContrast style={{ maxWidth: '10rem' }}>
+                <ButtonDefaultContrast
+                    style={{ maxWidth: '10rem' }}
+                    onClick={handleNavigateToRegister}
+                >
                     PROJETAR
                 </ButtonDefaultContrast>
             </LayoutMain>

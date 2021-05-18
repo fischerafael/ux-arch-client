@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 
 import { api } from '../../../services/config/api'
@@ -16,13 +16,20 @@ import { ButtonDefault } from '../../../design/components/button'
 
 export const LoginRegisterPage = () => {
     // UI STATE
-    const [appPage, setAppPage] =
-        useState<'login' | 'register' | 'loading'>('login')
+    const [appPage, setAppPage] = useState('login')
 
     const handleSwitchPage = () => {
         if (appPage === 'register') setAppPage('login')
         if (appPage === 'login') setAppPage('register')
     }
+
+    useEffect(() => {
+        const { query } = Router
+        if (query.state) {
+            const pageState = query.state as string
+            setAppPage(pageState)
+        }
+    }, [])
 
     // CREDENTIALS STATE
     const { credentials, setCredentials } = useCredentials()

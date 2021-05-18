@@ -1,23 +1,35 @@
 import React from 'react'
 
 import { useCredentials } from '../../../context/CredentialsContext'
-import { Theme } from '../../../design/theme'
+import { Theme, width } from '../../../design/theme'
 import { ICredentials } from '../../../entities/Credentials'
+import { IProjects } from '../../../entities/Projects'
 
 import { ButtonDefault } from '../../../design/components/button'
 import { DisplayImage } from '../../../design/components/display'
-import { LayoutFlex } from '../../../design/components/layout'
-import { AnchorText, TextParagraph } from '../../../design/components/text'
+import {
+    LayoutFlex,
+    LayoutGridDashboard,
+    LayoutGridResponsive
+} from '../../../design/components/layout'
+import {
+    AnchorText,
+    TextParagraph,
+    TextSubTitle
+} from '../../../design/components/text'
 
 interface Props {
     credentials: ICredentials
+    referenceProjects: IProjects
 }
 
-export const DashboardPage = ({ credentials }: Props) => {
+export const DashboardPage = ({ credentials, referenceProjects }: Props) => {
     const { handleLogout } = useCredentials()
 
+    console.log('REFERENCE PROJECTS', referenceProjects)
+
     return (
-        <LayoutFlex
+        <LayoutGridDashboard
             as="main"
             style={{
                 width: '100vw',
@@ -27,11 +39,7 @@ export const DashboardPage = ({ credentials }: Props) => {
             <LayoutFlex
                 as="aside"
                 style={{
-                    position: 'fixed',
-                    left: '0',
-                    top: '0',
-                    width: '15rem',
-                    height: '100%',
+                    width: '100%',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     padding: '2rem',
@@ -78,11 +86,11 @@ export const DashboardPage = ({ credentials }: Props) => {
                             fontSize: '0.5rem'
                         }}
                     >
-                        ATMOSFERAS & EXPERIÊNCIAS
+                        REFERÊNCIAS
                     </TextParagraph>
 
-                    <AnchorText>Avaliar</AnchorText>
-                    <AnchorText>Consultar</AnchorText>
+                    <AnchorText>Públicas</AnchorText>
+                    <AnchorText>Privadas</AnchorText>
                 </LayoutFlex>
                 <ButtonDefault
                     style={{ height: '3rem' }}
@@ -95,14 +103,104 @@ export const DashboardPage = ({ credentials }: Props) => {
             <LayoutFlex
                 as="section"
                 style={{
-                    marginLeft: '15rem',
-                    background: 'red',
                     height: '100%',
-                    width: '100%'
+                    width: '100%',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                    overflowY: 'scroll',
+                    padding: '1rem'
                 }}
             >
-                Body
+                <TextSubTitle
+                    style={{
+                        padding: '1rem 0',
+                        letterSpacing: '.1rem'
+                    }}
+                >
+                    REFERÊNCIAS
+                </TextSubTitle>
+                <LayoutGridResponsive>
+                    <LayoutFlex
+                        style={{
+                            background: `${Theme.colors.constrastSecondary}`,
+                            width: '100%',
+                            padding: '2rem',
+                            gap: '1rem',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <DisplayImage
+                            src="/assets/icons/evaluate.svg"
+                            alt="evaluate"
+                        />
+                        <TextSubTitle style={{ fontWeight: 'bold' }}>
+                            Avaliar
+                        </TextSubTitle>
+                        <TextParagraph style={{ fontSize: '0.5rem' }}>
+                            Auxilie o algoritmo do Ux Arch a ser mais preciso
+                            avaliando projetos.
+                        </TextParagraph>
+                    </LayoutFlex>
+                    <LayoutFlex
+                        style={{
+                            background: `${Theme.colors.constrastSecondary}`,
+                            width: '100%',
+                            padding: '2rem',
+                            gap: '1rem',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <DisplayImage
+                            src="/assets/icons/evaluate.svg"
+                            alt="evaluate"
+                        />
+                        <TextSubTitle style={{ fontWeight: 'bold' }}>
+                            Consultar
+                        </TextSubTitle>
+                        <TextParagraph style={{ fontSize: '0.5rem' }}>
+                            Confira como os usuários do Ux Arch avaliaram outros
+                            projetos.
+                        </TextParagraph>
+                    </LayoutFlex>
+                </LayoutGridResponsive>
+                <TextSubTitle
+                    style={{
+                        padding: '1rem 0',
+                        letterSpacing: '.1rem'
+                    }}
+                >
+                    PROJETOS
+                </TextSubTitle>
+                <LayoutGridResponsive>
+                    <LayoutFlex
+                        style={{
+                            background: `${Theme.colors.constrastSecondary}`,
+                            width: '100%',
+                            padding: '2rem',
+                            gap: '1rem',
+                            flexDirection: 'column',
+                            alignItems: 'flex-start',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <DisplayImage
+                            src="/assets/icons/evaluate.svg"
+                            alt="evaluate"
+                        />
+                        <TextSubTitle style={{ fontWeight: 'bold' }}>
+                            Criar Projeto
+                        </TextSubTitle>
+                        <TextParagraph style={{ fontSize: '0.5rem' }}>
+                            (em breve)
+                        </TextParagraph>
+                    </LayoutFlex>
+                </LayoutGridResponsive>
             </LayoutFlex>
-        </LayoutFlex>
+        </LayoutGridDashboard>
     )
 }
