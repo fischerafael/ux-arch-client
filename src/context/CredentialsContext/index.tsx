@@ -1,4 +1,6 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
+import Cookie from 'js-cookie'
+
 import { ICredentials } from '../../entities/Credentials'
 
 interface IProps {
@@ -10,6 +12,10 @@ const CredentialsContext = createContext({} as IProps)
 
 export const CredentialsProvider = ({ children }) => {
     const [credentials, setCredentials] = useState({} as ICredentials)
+
+    useEffect(() => {
+        Cookie.set('credentials', credentials)
+    }, [credentials])
 
     return (
         <CredentialsContext.Provider value={{ credentials, setCredentials }}>

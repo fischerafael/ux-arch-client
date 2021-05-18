@@ -1,7 +1,7 @@
-import { AppPage } from '../../src/pages/AppPage'
+import { LoginRegisterPage } from '../../src/pages/App/LoginRegisterPage'
 
 const index = () => {
-    return <AppPage />
+    return <LoginRegisterPage />
 }
 
 export default index

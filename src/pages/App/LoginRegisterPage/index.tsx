@@ -1,31 +1,35 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
 
-import { InputText } from '../../design/components/input'
-import { LayoutFlex } from '../../design/components/layout'
+import { api } from '../../../services/config/api'
+import { useCredentials } from '../../../context/CredentialsContext'
+
+import { InputText } from '../../../design/components/input'
+import { LayoutFlex } from '../../../design/components/layout'
 import {
     AnchorText,
     TextLabel,
     TextParagraph,
     TextSubTitle
-} from '../../design/components/text'
-import { ButtonDefault } from '../../design/components/button'
-import { api } from '../../services/config/api'
-import { useCredentials } from '../../context/CredentialsContext'
+} from '../../../design/components/text'
+import { ButtonDefault } from '../../../design/components/button'
 
-export const AppPage = () => {
-    // const { push } = useRouter()
-    const { credentials, setCredentials } = useCredentials()
-
-    console.log('CREDENTIALS', credentials)
-
-    const [appPage, setAppPage] = useState('login')
+export const LoginRegisterPage = () => {
+    // UI STATE
+    const [appPage, setAppPage] =
+        useState<'login' | 'register' | 'loading'>('login')
 
     const handleSwitchPage = () => {
         if (appPage === 'register') setAppPage('login')
         if (appPage === 'login') setAppPage('register')
     }
 
+    // CREDENTIALS STATE
+    const { credentials, setCredentials } = useCredentials()
+
+    console.log('CREDENTIALS', credentials)
+
+    // LOGIN STATE
     const [loginIdentifier, setLoginIdentifier] = useState('')
     const [loginPassword, setLoginPassword] = useState('')
 
@@ -33,8 +37,6 @@ export const AppPage = () => {
         identifier: loginIdentifier,
         password: loginPassword
     }
-
-    // console.log('LOGIN DATA', loginData)
 
     const handleLogin = async (e: any) => {
         e.preventDefault()
@@ -58,6 +60,7 @@ export const AppPage = () => {
         }
     }
 
+    // REGISTER STATE
     const [registerName, setRegisterName] = useState('')
     const [registerUsername, setRegisterUsername] = useState('')
     const [registerEmail, setRegisterEmail] = useState('')
@@ -72,9 +75,31 @@ export const AppPage = () => {
 
     // console.log('REGISTER DATA', registerData)
 
-    const handleRegister = (e: any) => {
+    const handleRegister = async (e: any) => {
         e.preventDefault()
-        alert('register')
+        setAppPage('loading')
+        try {
+            const { data } = await api.post(
+                '/auth/local/register',
+                registerData
+            )
+            setCredentials({
+                email: data.user.email,
+                id: data.user.id,
+                status: data.user.status,
+                username: data.user.username,
+                jwt: data.jwt
+            })
+            Router.push('/app/dashboard')
+        } catch (error) {
+            console.log('LOGIN ERROR', error)
+        } finally {
+            setAppPage('login')
+            setRegisterName('')
+            setRegisterUsername('')
+            setRegisterEmail('')
+            setRegisterPassword('')
+        }
     }
 
     return (
