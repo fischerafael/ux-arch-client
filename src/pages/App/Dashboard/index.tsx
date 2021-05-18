@@ -89,8 +89,8 @@ export const DashboardPage = ({ credentials, referenceProjects }: Props) => {
                         REFERÊNCIAS
                     </TextParagraph>
 
-                    <AnchorText>Públicas</AnchorText>
-                    <AnchorText>Privadas</AnchorText>
+                    <AnchorText>Avaliar</AnchorText>
+                    <AnchorText>Consultar</AnchorText>
                 </LayoutFlex>
                 <ButtonDefault
                     style={{ height: '3rem' }}
