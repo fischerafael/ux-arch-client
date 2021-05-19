@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Router from 'next/router'
 import styled from 'styled-components'
 import { DisplayImage } from '../../design/components/display'
@@ -8,8 +8,16 @@ import {
 } from '../../design/components/button'
 import { LayoutFlex } from '../../design/components/layout'
 import { TextSubTitle, TextTitle } from '../../design/components/text'
+import { api } from '../../services/config/api'
 
 export const HomePage = () => {
+    useEffect(() => {
+        ;(async function () {
+            const { status } = await api.get('/')
+            console.log('WAKE UP API CALL STATUS', status)
+        })()
+    }, [])
+
     const handleNavigateToLogin = () => {
         Router.push(`/app?state=login`)
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavCard } from '../../../../components/NavCard'
+import Router from 'next/router'
 
 import {
     LayoutFlex,
@@ -7,7 +7,13 @@ import {
 } from '../../../../design/components/layout'
 import { TextSubTitle } from '../../../../design/components/text'
 
+import { NavCard } from '../../../NavCard'
+
 export const MainScreen = () => {
+    const handleNavigateToEvaluate = () => {
+        Router.push('/app/dashboard/evaluate')
+    }
+
     return (
         <LayoutFlex
             as="section"
@@ -35,7 +41,7 @@ export const MainScreen = () => {
                     cardDescription="Auxilie o algoritmo do Ux Arch a ser mais preciso avaliando
                     projetos."
                     cardIcon="/assets/icons/evaluate.svg"
-                    onClick={(e) => console.log('clicou')}
+                    onClick={handleNavigateToEvaluate}
                 />
                 <NavCard
                     cardTitle="Consultar"

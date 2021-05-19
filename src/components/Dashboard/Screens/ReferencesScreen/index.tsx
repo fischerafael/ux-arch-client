@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
 
-import { ProjectCard } from '../../../../components/ProjectCard'
+import { ProjectCard } from '../../../ProjectCard'
 import {
     LayoutFlex,
     LayoutGridResponsive

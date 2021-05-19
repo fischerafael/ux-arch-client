@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { useCredentials } from '../../../../context/CredentialsContext'
-import { Theme } from '../../../../design/theme'
+import { useCredentials } from '../../../context/CredentialsContext'
+import { Theme } from '../../../design/theme'
 
-import { ButtonDefault } from '../../../../design/components/button'
-import { DisplayImage } from '../../../../design/components/display'
-import { LayoutFlex } from '../../../../design/components/layout'
-import { AnchorText, TextParagraph } from '../../../../design/components/text'
+import { ButtonDefault } from '../../../design/components/button'
+import { DisplayImage } from '../../../design/components/display'
+import { LayoutFlex } from '../../../design/components/layout'
+import { AnchorText, TextParagraph } from '../../../design/components/text'
 
 export const SideBar = () => {
     const { credentials, handleLogout } = useCredentials()

@@ -1,19 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import { SideBar } from './SideBar'
-import { MainScreen } from './MainScreen'
+import { SideBar } from '../../../components/Dashboard/SideBar'
+import { MainScreen } from '../../../components/Dashboard/Screens/MainScreen'
 import { LayoutGridDashboard } from '../../../design/components/layout'
-import { ReferencesScreen } from './ReferencesScreen'
 
 export const DashboardPage = () => {
-    const defaultScreen = 'references'
-
-    const [dashboardScreen, setDashboardScreen] = useState(defaultScreen)
-
-    const handleChangeDashboardScreen = (screen: string) => {
-        setDashboardScreen(screen)
-    }
-
     return (
         <LayoutGridDashboard
             as="main"
@@ -23,8 +14,7 @@ export const DashboardPage = () => {
             }}
         >
             <SideBar />
-            {dashboardScreen === 'main' && <MainScreen />}
-            {dashboardScreen === 'references' && <ReferencesScreen />}
+            <MainScreen />
         </LayoutGridDashboard>
     )
 }
