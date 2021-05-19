@@ -3,7 +3,7 @@ import React from 'react'
 import { LayoutGridDashboard } from '../../../../design/components/layout'
 
 import { SideBar } from '../../../../components/Dashboard/SideBar'
-import { ReferencesScreen } from '../../../../components/Dashboard/Screens/ReferencesScreen'
+import { EvaluateScreen } from '../../../../components/Dashboard/Screens/EvaluateScreen'
 
 export const EvaluatePage = () => {
     return (
@@ -15,7 +15,7 @@ export const EvaluatePage = () => {
             }}
         >
             <SideBar />
-            <ReferencesScreen />
+            <EvaluateScreen />
         </LayoutGridDashboard>
     )
 }

@@ -10,7 +10,7 @@ import { TextParagraph, TextSubTitle } from '../../../../design/components/text'
 import { IProjects } from '../../../../entities/Projects'
 import { api } from '../../../../services/config/api'
 
-export const ReferencesScreen = () => {
+export const EvaluateScreen = () => {
     const [referenceProjects, setReferenceProjects] = useState<IProjects[]>([
         {} as IProjects
     ])
@@ -24,7 +24,7 @@ export const ReferencesScreen = () => {
     }, [])
 
     const handleNavigateToEvaluateProject = (project: IProjects) => {
-        Router.push(`/app/dashboard?project=${project.id}`)
+        Router.push(`/app/dashboard/evaluate/${project.slug}`)
     }
 
     return (
@@ -61,15 +61,16 @@ export const ReferencesScreen = () => {
             </LayoutFlex>
 
             <LayoutGridResponsive>
-                {referenceProjects.map((reference) => (
-                    <ProjectCard
-                        key={reference.id}
-                        project={reference}
-                        onClick={() =>
-                            handleNavigateToEvaluateProject(reference)
-                        }
-                    />
-                ))}
+                {referenceProjects.length &&
+                    referenceProjects.map((reference) => (
+                        <ProjectCard
+                            key={reference.id}
+                            project={reference}
+                            onClick={() =>
+                                handleNavigateToEvaluateProject(reference)
+                            }
+                        />
+                    ))}
             </LayoutGridResponsive>
         </LayoutFlex>
     )
