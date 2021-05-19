@@ -1,16 +1,10 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { ICredentials } from '../../../src/entities/Credentials'
-import { IProjects } from '../../../src/entities/Projects'
+
 import { DashboardPage } from '../../../src/pages/App/Dashboard'
-import { api } from '../../../src/services/config/api'
 
-interface Props {
-    referenceProjects: IProjects
-}
-
-const index = ({ referenceProjects }: Props) => {
-    return <DashboardPage referenceProjects={referenceProjects} />
+const index = () => {
+    return <DashboardPage />
 }
 
 export default index
@@ -29,11 +23,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
         }
     }
 
-    const { data: referenceProjects } = await api.get('/projects')
-
     return {
-        props: {
-            referenceProjects: referenceProjects
-        }
+        props: {}
     }
 }

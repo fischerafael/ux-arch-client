@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import { IProjects } from '../../../entities/Projects'
 
 import { SideBar } from './SideBar'
 import { MainScreen } from './MainScreen'
 import { LayoutGridDashboard } from '../../../design/components/layout'
+import { ReferencesScreen } from './ReferencesScreen'
 
-interface Props {
-    referenceProjects: IProjects
-}
+export const DashboardPage = () => {
+    const defaultScreen = 'references'
 
-export const DashboardPage = ({ referenceProjects }: Props) => {
-    console.log('REFERENCE PROJECTS', referenceProjects)
-    const [dashboardScreen, setDashboardScreen] = useState('main')
+    const [dashboardScreen, setDashboardScreen] = useState(defaultScreen)
+
+    const handleChangeDashboardScreen = (screen: string) => {
+        setDashboardScreen(screen)
+    }
 
     return (
         <LayoutGridDashboard
@@ -23,6 +24,7 @@ export const DashboardPage = ({ referenceProjects }: Props) => {
         >
             <SideBar />
             {dashboardScreen === 'main' && <MainScreen />}
+            {dashboardScreen === 'references' && <ReferencesScreen />}
         </LayoutGridDashboard>
     )
 }
