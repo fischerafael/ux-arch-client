@@ -19,18 +19,23 @@ export const EvaluateScreen = () => {
     ])
     console.log('REFERENCE PROJECTS', referenceProjects)
 
-    if (referenceProjects.length > 1) {
-        const filteredProjects = referenceProjects[0].evaluations.some(
-            (ev) => ev.user === credentials.id
-        )
-
-        console.log('FILTERED PROJECTS', filteredProjects)
-    }
-
     useEffect(() => {
         ;(async function () {
-            const { data: referenceProjects } = await api.get('/projects')
-            setReferenceProjects(referenceProjects)
+            const { data } = await api.get('/projects')
+
+            const rawProjects = data as IProjects[]
+
+            // console.log('RAW PROJECTS', rawProjects)
+
+            // const filteredProjects = rawProjects.filter((proj) =>
+            //     proj.evaluations.some((ev) => ev.user === credentials.id)
+            // )
+
+            // console.log('FILTERED PROJECTS', filteredProjects)
+
+            const shuffledProjects = rawProjects.sort(() => Math.random() - 0.5)
+
+            setReferenceProjects(shuffledProjects)
         })()
     }, [])
 
