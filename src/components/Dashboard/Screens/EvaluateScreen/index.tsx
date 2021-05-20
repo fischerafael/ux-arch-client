@@ -9,12 +9,23 @@ import {
 import { TextParagraph, TextSubTitle } from '../../../../design/components/text'
 import { IProjects } from '../../../../entities/Projects'
 import { api } from '../../../../services/config/api'
+import { useCredentials } from '../../../../context/CredentialsContext'
 
 export const EvaluateScreen = () => {
+    const { credentials } = useCredentials()
+
     const [referenceProjects, setReferenceProjects] = useState<IProjects[]>([
         {} as IProjects
     ])
     console.log('REFERENCE PROJECTS', referenceProjects)
+
+    if (referenceProjects.length > 1) {
+        const filteredProjects = referenceProjects[0].evaluations.some(
+            (ev) => ev.user === credentials.id
+        )
+
+        console.log('FILTERED PROJECTS', filteredProjects)
+    }
 
     useEffect(() => {
         ;(async function () {

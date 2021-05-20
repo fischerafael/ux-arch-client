@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Router from 'next/router'
 
 import { useCredentials } from '../../../../../context/CredentialsContext'
 import { ButtonDefault } from '../../../../../design/components/button'
@@ -63,16 +64,19 @@ export const ProjectEvaluation = ({ project }: Props) => {
     console.log('EVALUATION DATA', evaluationData)
 
     const handleSubmitEvaluation = async () => {
-        alert('clicou')
         try {
             const { data } = await api.post('/evaluations', evaluationData, {
                 headers: {
                     Authorization: `Bearer ${credentials.jwt}`
                 }
             })
-            alert('finalizado')
+            Router.push('/app/dashboard/evaluate')
+            alert('Avaliação finalizada com sucesso!')
             console.log('SUCESS CREATING EVALUATION', data)
         } catch (error) {
+            alert(
+                'Ops, aconteceu algum erro durante a avaliação. Tente novamente'
+            )
             console.log('ERROR CREATING EVALUATION', error)
         }
     }
@@ -95,18 +99,18 @@ export const ProjectEvaluation = ({ project }: Props) => {
                     alignItems: 'flex-start'
                 }}
             >
-                <Status current={screen} total={totalScreens} />
-
                 <DisplayImage
                     src={project.thumbnail}
                     alt={project.name}
                     style={{ width: '100%', height: '40vh' }}
                 />
 
+                <Status current={screen} total={totalScreens} />
+
                 {screen === 1 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como você se sentiria DESCANSANDO nesse lugar?
+                            Como seria a experiência de DESCANSAR nesse local?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -127,7 +131,7 @@ export const ProjectEvaluation = ({ project }: Props) => {
                 {screen === 2 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como você se sentiria ESTUDANDO nesse lugar?
+                            Como seria a experiência de ESTUDAR nesse local?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -148,8 +152,8 @@ export const ProjectEvaluation = ({ project }: Props) => {
                 {screen === 3 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como você se sentiria realizando uma atividade de
-                            LAZER nesse lugar?
+                            Como seria a experiência de realizar alguma
+                            atividade LAZER nesse local?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -170,7 +174,7 @@ export const ProjectEvaluation = ({ project }: Props) => {
                 {screen === 4 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como você se sentiria TRABALHANDO nesse lugar?
+                            Como seria a experiência de TRABALHAR nesse local?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -191,8 +195,8 @@ export const ProjectEvaluation = ({ project }: Props) => {
                 {screen === 5 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como você se sentiria sendo OBRIGADO a estar nesse
-                            lugar?
+                            Como seria a experiência de ser OBRIGADO a ir nesse
+                            local?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -213,7 +217,7 @@ export const ProjectEvaluation = ({ project }: Props) => {
                 {screen === 6 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Você já esteve nesse lugar?
+                            Você já esteve nesse local?
                         </TextParagraph>
                         <LayoutFlex style={{ width: '100%', gap: '1rem' }}>
                             <LayoutFlex
