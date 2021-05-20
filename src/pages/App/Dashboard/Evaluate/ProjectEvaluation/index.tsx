@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import { useCredentials } from '../../../../../context/CredentialsContext'
+import { ButtonDefault } from '../../../../../design/components/button'
+
 import { DisplayImage } from '../../../../../design/components/display'
 import {
     LayoutFlex,
@@ -7,11 +10,9 @@ import {
 } from '../../../../../design/components/layout'
 import { TextParagraph } from '../../../../../design/components/text'
 import { Theme } from '../../../../../design/theme'
-import {
-    evaluationOptions,
-    IEvaluationOptions
-} from '../../../../../entities/Evaluation'
+import { evaluationOptions } from '../../../../../entities/Evaluation'
 import { IProjects } from '../../../../../entities/Projects'
+import { api } from '../../../../../services/config/api'
 
 import { EvaluationOptions } from './Components/EvaluationOptions'
 import { Status } from './Components/Status'
@@ -23,7 +24,7 @@ interface Props {
 export const ProjectEvaluation = ({ project }: Props) => {
     console.log('PROJECT TO BE EVALUATED INFO', project)
 
-    const totalScreens = 5
+    const totalScreens = 7
     const [screen, setScreen] = useState(1)
 
     console.log('SCREEN', screen)
@@ -33,17 +34,47 @@ export const ProjectEvaluation = ({ project }: Props) => {
         study: 0.5,
         leisure: 0.5,
         work: 0.5,
-        mandatory: 0.5
+        mandatory: 0.5,
+        have_been: false
     })
 
     console.log('EVALUATIONS', evaluations)
 
-    const handleNextEvaluation = (key: string, option: IEvaluationOptions) => {
+    const handleNextEvaluation = (
+        key: string,
+        optionValue: number | boolean
+    ) => {
         setEvaluations({
             ...evaluations,
-            [key]: option.value
+            [key]: optionValue
         })
-        if (screen < 5) setScreen((prevState) => prevState + 1)
+        if (screen < 7) setScreen((prevState) => prevState + 1)
+    }
+
+    const { credentials } = useCredentials()
+
+    const evaluationData = {
+        ...evaluations,
+        user: credentials.id,
+        project: project.id,
+        version: 'VERSION 1 - All emojis'
+    }
+
+    console.log('EVALUATION DATA', evaluationData)
+
+    const handleSubmitEvaluation = async () => {
+        alert('clicou')
+        try {
+            const { data } = await api.post('/evaluations', evaluationData, {
+                headers: {
+                    Authorization: `Bearer ${credentials.jwt}`
+                }
+            })
+            alert('finalizado')
+            console.log('SUCESS CREATING EVALUATION', data)
+        } catch (error) {
+            console.log('ERROR CREATING EVALUATION', error)
+        }
     }
 
     return (
@@ -83,7 +114,10 @@ export const ProjectEvaluation = ({ project }: Props) => {
                                     key={option.id}
                                     option={option}
                                     onClick={() =>
-                                        handleNextEvaluation('rest', option)
+                                        handleNextEvaluation(
+                                            'rest',
+                                            option.value
+                                        )
                                     }
                                 />
                             ))}
@@ -101,7 +135,10 @@ export const ProjectEvaluation = ({ project }: Props) => {
                                     key={option.id}
                                     option={option}
                                     onClick={() =>
-                                        handleNextEvaluation('study', option)
+                                        handleNextEvaluation(
+                                            'study',
+                                            option.value
+                                        )
                                     }
                                 />
                             ))}
@@ -120,7 +157,10 @@ export const ProjectEvaluation = ({ project }: Props) => {
                                     key={option.id}
                                     option={option}
                                     onClick={() =>
-                                        handleNextEvaluation('leisure', option)
+                                        handleNextEvaluation(
+                                            'leisure',
+                                            option.value
+                                        )
                                     }
                                 />
                             ))}
@@ -138,7 +178,10 @@ export const ProjectEvaluation = ({ project }: Props) => {
                                     key={option.id}
                                     option={option}
                                     onClick={() =>
-                                        handleNextEvaluation('work', option)
+                                        handleNextEvaluation(
+                                            'work',
+                                            option.value
+                                        )
                                     }
                                 />
                             ))}
@@ -159,12 +202,61 @@ export const ProjectEvaluation = ({ project }: Props) => {
                                     onClick={() =>
                                         handleNextEvaluation(
                                             'mandatory',
-                                            option
+                                            option.value
                                         )
                                     }
                                 />
                             ))}
                         </LayoutGridAlternatives>
+                    </>
+                )}
+                {screen === 6 && (
+                    <>
+                        <TextParagraph style={{ padding: '1rem 0' }}>
+                            Você já esteve nesse lugar?
+                        </TextParagraph>
+                        <LayoutFlex style={{ width: '100%', gap: '1rem' }}>
+                            <LayoutFlex
+                                style={{
+                                    flexDirection: 'column',
+                                    background: `${Theme.colors.constrastSecondary}`,
+                                    padding: '1rem',
+                                    cursor: 'pointer',
+                                    width: '100%'
+                                }}
+                                onClick={() =>
+                                    handleNextEvaluation('have_been', true)
+                                }
+                            >
+                                <TextParagraph>Sim</TextParagraph>
+                            </LayoutFlex>
+                            <LayoutFlex
+                                style={{
+                                    flexDirection: 'column',
+                                    background: `${Theme.colors.constrastSecondary}`,
+                                    padding: '1rem',
+                                    cursor: 'pointer',
+                                    width: '100%'
+                                }}
+                                onClick={() => {
+                                    handleNextEvaluation('have_been', false)
+                                }}
+                            >
+                                <TextParagraph>Não</TextParagraph>
+                            </LayoutFlex>
+                        </LayoutFlex>
+                    </>
+                )}
+                {screen === 7 && (
+                    <>
+                        <TextParagraph style={{ padding: '1rem 0' }}>
+                            Prontinho!
+                        </TextParagraph>
+                        <LayoutFlex style={{ width: '100%', gap: '1rem' }}>
+                            <ButtonDefault onClick={handleSubmitEvaluation}>
+                                Enviar avaliação
+                            </ButtonDefault>
+                        </LayoutFlex>
                     </>
                 )}
             </LayoutFlex>
