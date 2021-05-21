@@ -23,7 +23,7 @@ interface Props {
 }
 
 export const ProjectEvaluation = ({ project }: Props) => {
-    console.log('PROJECT TO BE EVALUATED INFO', project)
+    console.log('PROJECT TO BE EVALUATED INFO', project.name)
 
     const totalScreens = 7
     const [screen, setScreen] = useState(1)
@@ -53,6 +53,8 @@ export const ProjectEvaluation = ({ project }: Props) => {
     }
 
     const { credentials } = useCredentials()
+
+    console.log('USER CREDENTIALS', credentials.id)
 
     const evaluationData = {
         ...evaluations,

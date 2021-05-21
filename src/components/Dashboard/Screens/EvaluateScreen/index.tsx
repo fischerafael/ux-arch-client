@@ -10,6 +10,11 @@ import { TextParagraph, TextSubTitle } from '../../../../design/components/text'
 import { IProjects } from '../../../../entities/Projects'
 import { api } from '../../../../services/config/api'
 import { useCredentials } from '../../../../context/CredentialsContext'
+import {
+    handleCheckProjectAlreadyEvaluated,
+    handleFilterAlreadyEvaluatedProjects,
+    handleShuffleProjects
+} from '../../../../helpers'
 
 export const EvaluateScreen = () => {
     const { credentials } = useCredentials()
@@ -21,21 +26,24 @@ export const EvaluateScreen = () => {
 
     useEffect(() => {
         ;(async function () {
+            console.log('LOGGED USER', credentials.id)
+
             const { data } = await api.get('/projects')
 
             const rawProjects = data as IProjects[]
 
-            // console.log('RAW PROJECTS', rawProjects)
+            console.log('RAW PROJECTS', rawProjects)
 
-            // const filteredProjects = rawProjects.filter((proj) =>
-            //     proj.evaluations.some((ev) => ev.user === credentials.id)
-            // )
+            const filteredProjects = handleFilterAlreadyEvaluatedProjects(
+                rawProjects,
+                credentials.id
+            )
 
-            // console.log('FILTERED PROJECTS', filteredProjects)
+            console.log('FILTERED PROJECTS', filteredProjects)
 
-            const shuffledProjects = rawProjects.sort(() => Math.random() - 0.5)
+            // const shuffledProjects = handleShuffleProjects(filteredProjects)
 
-            setReferenceProjects(shuffledProjects)
+            setReferenceProjects(filteredProjects)
         })()
     }, [])
 
