@@ -45,8 +45,7 @@ export const MainScreen = () => {
                 />
                 <NavCard
                     cardTitle="Consultar"
-                    cardDescription="Confira como os usuários do Ux Arch avaliaram outros
-                    projetos."
+                    cardDescription="(em breve)"
                     cardIcon="/assets/icons/evaluate.svg"
                     onClick={() => alert('oi')}
                 />

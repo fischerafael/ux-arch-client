@@ -26,7 +26,8 @@ export const NavCard = ({
                 gap: '1rem',
                 flexDirection: 'column',
                 alignItems: 'flex-start',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                minHeight: '12rem'
             }}
             onClick={onClick}
         >

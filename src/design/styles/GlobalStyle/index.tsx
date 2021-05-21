@@ -20,4 +20,16 @@ const global = css`
     ::placeholder {
         color: ${(props) => props.theme.colors.grey};
     }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: ${(props) => props.theme.colors.constrastSecondary};
+    }
 `

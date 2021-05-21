@@ -1,3 +1,4 @@
+import { SingletonRouter } from 'next/router'
 import { IProjects } from '../entities/Projects'
 
 export const handleCheckProjectAlreadyEvaluated = (
@@ -20,4 +21,8 @@ export const handleFilterAlreadyEvaluatedProjects = (
 
 export const handleShuffleProjects = (projects: IProjects[]) => {
     return projects.sort(() => Math.random() - 0.5)
+}
+
+export const handleNavigateTo = (url: string, router: SingletonRouter) => {
+    router.push(url)
 }

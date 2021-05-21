@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components'
 import { CredentialsProvider } from '../src/context/CredentialsContext'
+import { MobileMenuProvider } from '../src/context/MobileMenuContext'
 
 import { GlobalStyle } from '../src/design/styles/GlobalStyle'
 import { Theme } from '../src/design/theme'
@@ -9,8 +10,10 @@ export default function App({ Component, pageProps }) {
         <>
             <ThemeProvider theme={Theme}>
                 <CredentialsProvider>
-                    <GlobalStyle />
-                    <Component {...pageProps} />
+                    <MobileMenuProvider>
+                        <GlobalStyle />
+                        <Component {...pageProps} />
+                    </MobileMenuProvider>
                 </CredentialsProvider>
             </ThemeProvider>
         </>
