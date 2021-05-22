@@ -60,7 +60,7 @@ export const ProjectEvaluation = ({ project }: Props) => {
         ...evaluations,
         user: credentials.id,
         project: project.id,
-        version: 'VERSION 1 - All emojis'
+        version: 'VERSION 2 - 8 Options'
     }
 
     console.log('EVALUATION DATA', evaluationData)
