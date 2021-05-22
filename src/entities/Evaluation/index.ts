@@ -3,12 +3,80 @@ export interface IEvaluationOptions {
     emoji: string
     title: string
     value: number
-    active: boolean
+    active?: boolean
+    hashtags?: string
 }
 
-const fraction = 1 / 15
+const fraction = 1 / 7
 
-export const evaluationOptions: IEvaluationOptions[] = [
+export const evaluationOptions = [
+    {
+        id: '0',
+        emoji: '😬',
+        title: 'Extremamente Desagradável',
+        value: 0 * fraction,
+        active: false,
+        hashtags: '#nervoso #tenso'
+    },
+    {
+        id: '1',
+        emoji: '😂',
+        title: 'Extremamente Agradável',
+        value: 4 * fraction,
+        active: false,
+        hashtags: '#excitado #surpreso'
+    },
+    {
+        id: '2',
+        emoji: '😤',
+        title: 'Muito Desagradável',
+        value: 1 * fraction,
+        active: false,
+        hashtags: '#chateado #estressado'
+    },
+    {
+        id: '3',
+        emoji: '😁',
+        title: 'Muito Agradável',
+        value: 5 * fraction,
+        active: false,
+        hashtags: '#feliz #eufórico'
+    },
+    {
+        id: '4',
+        emoji: '😟',
+        title: 'Desagradável',
+        value: 2 * fraction,
+        active: false,
+        hashtags: '#triste #deprimido'
+    },
+    {
+        id: '5',
+        emoji: '😉',
+        title: 'Agradável',
+        value: 6 * fraction,
+        active: false,
+        hashtags: '#contente #sereno'
+    },
+    {
+        id: '6',
+        emoji: '😴',
+        title: 'Levemente Desagradável',
+        value: 3 * fraction,
+        active: false,
+        hashtags: '#fatigado #letárgico'
+    },
+    {
+        id: '7',
+        emoji: '🙂',
+        title: 'Levemente Agradável',
+        value: 7 * fraction,
+        active: false,
+        hashtags: '#relaxado #calmo'
+    }
+]
+
+export const evaluationOptionsLegacy: IEvaluationOptions[] = [
     {
         id: '0',
         emoji: '😬',

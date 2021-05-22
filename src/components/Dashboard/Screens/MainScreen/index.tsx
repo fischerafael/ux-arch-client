@@ -47,7 +47,7 @@ export const MainScreen = () => {
                     cardTitle="Consultar"
                     cardDescription="(em breve)"
                     cardIcon="/assets/icons/evaluate.svg"
-                    onClick={() => alert('oi')}
+                    onClick={() => alert('Em breve')}
                 />
             </LayoutGridResponsive>
             <TextSubTitle
@@ -63,7 +63,7 @@ export const MainScreen = () => {
                     cardTitle="Criar Projeto"
                     cardDescription="(em breve)"
                     cardIcon="/assets/icons/evaluate.svg"
-                    onClick={(e) => console.log('clicou')}
+                    onClick={() => alert('Em breve')}
                 />
             </LayoutGridResponsive>
         </LayoutFlex>
