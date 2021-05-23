@@ -1,6 +1,6 @@
 import React from 'react'
-import { LayoutFlex } from '../../../../../../../design/components/layout'
-import { Theme } from '../../../../../../../design/theme'
+import { LayoutFlex } from '../../../../design/components/layout'
+import { Theme } from '../../../../design/theme'
 
 export const Status = ({ current, total }) => {
     const percentage = (current / total) * 100

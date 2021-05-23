@@ -1,7 +1,6 @@
 import React from 'react'
-
-import { MainScreen } from '../../../components/Dashboard/Screens/MainScreen'
-import { DashboardContainer } from '../../../components/Dashboard/Container'
+import { DashboardContainer } from '../../components/Dashboard/Container'
+import { MainScreen } from '../../components/Dashboard/Screens/MainScreen'
 
 export const DashboardPage = () => {
     return (

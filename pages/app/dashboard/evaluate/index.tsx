@@ -1,10 +1,9 @@
 import React from 'react'
 import { GetServerSideProps } from 'next'
-
-import { EvaluatePage } from '../../../../src/pages/App/Dashboard/Evaluate'
+import { AppEvaluatePage } from '../../../../src/pages/AppEvaluate'
 
 const index = () => {
-    return <EvaluatePage />
+    return <AppEvaluatePage />
 }
 
 export default index

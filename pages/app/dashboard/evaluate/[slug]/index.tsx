@@ -3,15 +3,14 @@ import { GetServerSideProps } from 'next'
 
 import { IProjects } from '../../../../../src/entities/Projects'
 import { api } from '../../../../../src/services/config/api'
-
-import { ProjectEvaluation } from '../../../../../src/pages/App/Dashboard/Evaluate/ProjectEvaluation'
+import { AppProjectEvaluation } from '../../../../../src/pages/AppProjectEvaluation'
 
 interface Props {
     project: IProjects
 }
 
 const index = ({ project }: Props) => {
-    return <ProjectEvaluation project={project} />
+    return <AppProjectEvaluation project={project} />
 }
 
 export default index

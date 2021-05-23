@@ -1,28 +1,25 @@
 import React, { useState } from 'react'
 import Router from 'next/router'
-
-import { useCredentials } from '../../../../../context/CredentialsContext'
-import { ButtonDefault } from '../../../../../design/components/button'
-
-import { DisplayImage } from '../../../../../design/components/display'
+import { IProjects } from '../../entities/Projects'
+import { useCredentials } from '../../context/CredentialsContext'
+import { api } from '../../services/config/api'
 import {
     LayoutFlex,
     LayoutGridAlternatives
-} from '../../../../../design/components/layout'
-import { TextParagraph } from '../../../../../design/components/text'
-import { Theme } from '../../../../../design/theme'
-import { evaluationOptions } from '../../../../../entities/Evaluation'
-import { IProjects } from '../../../../../entities/Projects'
-import { api } from '../../../../../services/config/api'
-
-import { EvaluationOptions } from './Components/EvaluationOptions'
-import { Status } from './Components/Status'
+} from '../../design/components/layout'
+import { Theme } from '../../design/theme'
+import { DisplayImage } from '../../design/components/display'
+import { Status } from './components/Status'
+import { TextParagraph } from '../../design/components/text'
+import { evaluationOptions } from '../../entities/Evaluation'
+import { EvaluationOptions } from './components/EvaluationOptions'
+import { ButtonDefault } from '../../design/components/button'
 
 interface Props {
     project: IProjects
 }
 
-export const ProjectEvaluation = ({ project }: Props) => {
+export const AppProjectEvaluation = ({ project }: Props) => {
     console.log('PROJECT TO BE EVALUATED INFO', project.name)
 
     const totalScreens = 7

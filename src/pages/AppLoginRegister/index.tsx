@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Router from 'next/router'
+import { useCredentials } from '../../context/CredentialsContext'
+import { api } from '../../services/config/api'
 
-import { api } from '../../../services/config/api'
-import { useCredentials } from '../../../context/CredentialsContext'
-
-import { InputText } from '../../../design/components/input'
-import { LayoutFlex } from '../../../design/components/layout'
+import { LayoutFlex } from '../../design/components/layout'
 import {
     AnchorText,
     TextLabel,
     TextParagraph,
     TextSubTitle
-} from '../../../design/components/text'
-import { ButtonDefault } from '../../../design/components/button'
+} from '../../design/components/text'
+import { InputText } from '../../design/components/input'
+import { ButtonDefault } from '../../design/components/button'
 
-export const LoginRegisterPage = () => {
+export const AppLoginRegisterPage = () => {
     // UI STATE
     const [appPage, setAppPage] = useState('login')
 

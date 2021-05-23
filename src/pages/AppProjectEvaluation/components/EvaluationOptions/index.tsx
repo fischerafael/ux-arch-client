@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LayoutFlex } from '../../../../../../../design/components/layout'
-import { TextParagraph } from '../../../../../../../design/components/text'
-import { Theme } from '../../../../../../../design/theme'
-import { IEvaluationOptions } from '../../../../../../../entities/Evaluation'
+import { LayoutFlex } from '../../../../design/components/layout'
+import { TextParagraph } from '../../../../design/components/text'
+import { Theme } from '../../../../design/theme'
+import { IEvaluationOptions } from '../../../../entities/Evaluation'
 
 interface Props {
     option: IEvaluationOptions
