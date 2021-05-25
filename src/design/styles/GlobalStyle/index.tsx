@@ -17,6 +17,10 @@ const global = css`
         color: ${(props) => props.theme.colors.main};
     }
 
+    a {
+        text-decoration: none;
+    }
+
     ::placeholder {
         color: ${(props) => props.theme.colors.grey};
     }

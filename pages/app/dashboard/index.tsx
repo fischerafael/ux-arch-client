@@ -1,9 +1,9 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import { DashboardPage } from '../../../src/pages/AppDashboard'
+import { PageDashboard } from '../../../src/pages/PageDashboard'
 
 const index = () => {
-    return <DashboardPage />
+    return <PageDashboard />
 }
 
 export default index
