@@ -12,9 +12,13 @@ import {
 } from '../../design/components/templates'
 
 import { NavBar } from '../../components/App/NavBar'
-import { TextSubTitle } from '../../design/components/text'
-import { LayoutGridResponsive } from '../../design/components/layout'
+import { TextParagraph, TextSubTitle } from '../../design/components/text'
+import {
+    LayoutFlex,
+    LayoutGridResponsive
+} from '../../design/components/layout'
 import { ProjectCard } from './components/ProjectCard'
+import { Theme } from '../../design/theme'
 
 export const PageDashboardEvaluate = () => {
     const { credentials } = useCredentials()
@@ -53,14 +57,28 @@ export const PageDashboardEvaluate = () => {
                             SELECIONE UM PROJETO PARA AVALIAR
                         </TextSubTitle>
                         <LayoutGridResponsive>
-                            {referenceProjects.length &&
+                            {referenceProjects.length ? (
                                 referenceProjects.map((reference) => (
                                     <ProjectCard
                                         key={reference.id}
                                         project={reference}
                                         href={`/app/dashboard/evaluate/${reference.slug}`}
                                     />
-                                ))}
+                                ))
+                            ) : (
+                                <LayoutFlex
+                                    style={{
+                                        background: `${Theme.colors.constrastSecondary}`,
+                                        height: '20vh',
+                                        padding: '1rem'
+                                    }}
+                                >
+                                    <TextParagraph>
+                                        Você já avaliou todos os projetos!
+                                        Obrigado
+                                    </TextParagraph>
+                                </LayoutFlex>
+                            )}
                         </LayoutGridResponsive>
                     </TemplateDashboardSection>
                 </TemplateDashboardMainScrollSection>

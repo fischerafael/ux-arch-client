@@ -36,9 +36,9 @@ export const PageDashboard = () => {
                             />
                             <NavCard
                                 cardTitle="Consultar"
-                                cardDescription="Descubra como usuários avaliaram os projetos que alimentam a inteligência artificial do Ux Arch"
+                                cardDescription="Descubra como usuários avaliaram os projetos que alimentam a inteligência artificial do Ux Arch (em breve)."
                                 cardIcon="/assets/icons/evaluate.svg"
-                                cardUrl="/app/dashboard/evaluate"
+                                cardUrl="/app/dashboard"
                             />
                         </LayoutGridResponsive>
                     </TemplateDashboardSection>

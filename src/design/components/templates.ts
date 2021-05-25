@@ -9,6 +9,7 @@ export const TemplateDashboardMainScrollSection = styled(LayoutFlex)`
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: scroll;
+    padding-right: 0.25rem;
 `
 export const TemplateDashboardSection = styled(LayoutFlex)`
     width: 100%;
