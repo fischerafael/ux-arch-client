@@ -14,9 +14,9 @@ export const LayoutFlexSideBar = styled(LayoutFlex)`
 `
 
 export const LayoutFlexMobileNavBar = styled(LayoutFlex)`
-    @media (min-width: ${(props) => props.theme.width.medium}) {
+    /* @media (min-width: ${(props) => props.theme.width.medium}) {
         display: none;
-    }
+    } */
 `
 
 export const LayoutFlexMobileMenu = styled(LayoutFlex)`

@@ -33,7 +33,7 @@ export const MainScreen = () => {
                     letterSpacing: '.1rem'
                 }}
             >
-                REFERÊNCIAS
+                AJUDAR O UX ARCH
             </TextSubTitle>
             <LayoutGridResponsive>
                 <NavCard
@@ -42,12 +42,6 @@ export const MainScreen = () => {
                     projetos."
                     cardIcon="/assets/icons/evaluate.svg"
                     onClick={handleNavigateToEvaluate}
-                />
-                <NavCard
-                    cardTitle="Consultar"
-                    cardDescription="(em breve)"
-                    cardIcon="/assets/icons/evaluate.svg"
-                    onClick={() => alert('Em breve')}
                 />
             </LayoutGridResponsive>
             <TextSubTitle

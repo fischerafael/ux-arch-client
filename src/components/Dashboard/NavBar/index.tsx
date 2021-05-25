@@ -6,7 +6,7 @@ import { handleNavigateTo } from '../../../helpers'
 import { useMobileMenu } from '../../../context/MobileMenuContext'
 import { ButtonDefaultContrast } from '../../../design/components/button'
 
-export const MobileNavBar = () => {
+export const NavBar = () => {
     const { handleOpenMobileMenu } = useMobileMenu()
 
     return (

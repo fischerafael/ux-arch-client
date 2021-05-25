@@ -1,11 +1,13 @@
 import React from 'react'
-import { DashboardContainer } from '../../components/Dashboard/Container'
+
+import { NavBar } from '../../components/Dashboard/NavBar'
 import { MainScreen } from '../../components/Dashboard/Screens/MainScreen'
 
 export const DashboardPage = () => {
     return (
-        <DashboardContainer>
+        <>
+            <NavBar />
             <MainScreen />
-        </DashboardContainer>
+        </>
     )
 }

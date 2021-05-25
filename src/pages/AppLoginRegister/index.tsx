@@ -12,6 +12,7 @@ import {
 } from '../../design/components/text'
 import { InputText } from '../../design/components/input'
 import { ButtonDefault } from '../../design/components/button'
+import { Theme } from '../../design/theme'
 
 export const AppLoginRegisterPage = () => {
     // UI STATE
@@ -26,6 +27,8 @@ export const AppLoginRegisterPage = () => {
         const { query } = Router
         if (query.state) {
             const pageState = query.state as string
+
+            console.log('PAGE STATE', pageState)
             setAppPage(pageState)
         }
     }, [])
@@ -128,7 +131,9 @@ export const AppLoginRegisterPage = () => {
                         style={{ maxWidth: '4rem' }}
                     />
 
-                    <TextSubTitle>
+                    <TextSubTitle
+                        style={{ width: `${Theme.width.extraSmall}` }}
+                    >
                         Olá! Faça o login para continuar.
                     </TextSubTitle>
 
@@ -203,8 +208,11 @@ export const AppLoginRegisterPage = () => {
                         style={{ maxWidth: '4rem' }}
                     />
 
-                    <TextSubTitle>
-                        Olá! Cadastre-se para continuar.
+                    <TextSubTitle
+                        style={{ width: `${Theme.width.extraSmall}` }}
+                    >
+                        Olá! Antes de continuarmos, preencha os campos a seguir
+                        para poder acessar o Ux Arch novamente no futuro.
                     </TextSubTitle>
 
                     <LayoutFlex

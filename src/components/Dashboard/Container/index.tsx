@@ -5,7 +5,7 @@ import {
     LayoutGridDashboard
 } from '../../../design/components/layout'
 import { MobileMenu } from '../MobileMenu'
-import { MobileNavBar } from '../MobileNavBar'
+import { NavBar } from '../NavBar'
 import { SideBar } from '../SideBar'
 
 export const DashboardContainer = ({ children }) => {
@@ -30,7 +30,7 @@ export const DashboardContainer = ({ children }) => {
                     overflowY: 'scroll'
                 }}
             >
-                <MobileNavBar />
+                <NavBar />
                 {children}
             </LayoutFlex>
         </LayoutGridDashboard>
