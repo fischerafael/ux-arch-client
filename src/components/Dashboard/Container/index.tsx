@@ -5,7 +5,7 @@ import {
     LayoutGridDashboard
 } from '../../../design/components/layout'
 import { MobileMenu } from '../MobileMenu'
-import { NavBar } from '../NavBar'
+import { NavBar } from '../../App/NavBar'
 import { SideBar } from '../SideBar'
 
 export const DashboardContainer = ({ children }) => {
