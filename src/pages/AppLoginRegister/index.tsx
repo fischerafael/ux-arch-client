@@ -170,7 +170,7 @@ export const AppLoginRegisterPage = () => {
                             Email ou Usuário
                             <InputText
                                 type="text"
-                                placeholder="ex: rafael@gmail.com"
+                                placeholder="ex: rafael@gmail.com (min. 6 caracteres)"
                                 value={loginIdentifier}
                                 onChange={(e) =>
                                     setLoginIdentifier(e.target.value)
@@ -182,7 +182,7 @@ export const AppLoginRegisterPage = () => {
                             Senha
                             <InputText
                                 type="password"
-                                placeholder="Min. 6 caracteres"
+                                placeholder="(min. 6 caracteres)"
                                 value={loginPassword}
                                 onChange={(e) =>
                                     setLoginPassword(e.target.value)
