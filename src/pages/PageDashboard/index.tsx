@@ -21,24 +21,18 @@ export const PageDashboard = () => {
                         <TextSubTitle
                             style={{
                                 padding: '1rem 0',
-                                letterSpacing: '.1rem'
+                                letterSpacing: '.1rem',
+                                fontWeight: 'bold'
                             }}
                         >
-                            EXPERIÊNCIAS ARQUITETÔNICAS
+                            AVALIAR EXPERIÊNCIAS
                         </TextSubTitle>
                         <LayoutGridResponsive>
                             <NavCard
                                 cardTitle="Avaliar"
-                                cardDescription="Auxilie o algoritmo do Ux Arch a ser mais preciso avaliando
-                    projetos."
+                                cardDescription="Auxilie o algoritmo do Ux Arch a ser mais preciso na hora de prever como usuários irão se sentir em um projeto avaliando projetos e obras existentes."
                                 cardIcon="/assets/icons/evaluate.svg"
                                 cardUrl="/app/dashboard/evaluate"
-                            />
-                            <NavCard
-                                cardTitle="Consultar"
-                                cardDescription="Descubra como usuários avaliaram os projetos que alimentam a inteligência artificial do Ux Arch (em breve)."
-                                cardIcon="/assets/icons/evaluate.svg"
-                                cardUrl="/app/dashboard"
                             />
                         </LayoutGridResponsive>
                     </TemplateDashboardSection>
@@ -47,7 +41,8 @@ export const PageDashboard = () => {
                         <TextSubTitle
                             style={{
                                 padding: '1rem 0',
-                                letterSpacing: '.1rem'
+                                letterSpacing: '.1rem',
+                                fontWeight: 'bold'
                             }}
                         >
                             MEUS PROJETOS
@@ -55,7 +50,7 @@ export const PageDashboard = () => {
                         <LayoutGridResponsive>
                             <NavCard
                                 cardTitle="Criar Projeto"
-                                cardDescription="Cadastre seu projeto e descubra como os usuários irão experenciá-lo (em breve)."
+                                cardDescription="Crie projetos e descubra ainda nos estágios iniciais como será a experiência dos usuários ao utilizá-los (em breve)."
                                 cardIcon="/assets/icons/evaluate.svg"
                                 cardUrl="/app/dashboard"
                             />

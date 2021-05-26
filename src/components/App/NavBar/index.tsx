@@ -6,17 +6,16 @@ import {
     LayoutFlexMobileNavBar
 } from '../../../design/components/layout'
 import { handleNavigateTo } from '../../../helpers'
-import { useMobileMenu } from '../../../context/MobileMenuContext'
-import {
-    ButtonDefault,
-    ButtonDefaultContrast
-} from '../../../design/components/button'
+
+import { ButtonDefaultContrast } from '../../../design/components/button'
 import { Theme } from '../../../design/theme'
 import { useCredentials } from '../../../context/CredentialsContext'
 
 export const NavBar = () => {
     // const { handleOpenMobileMenu } = useMobileMenu()
-    const { handleLogout } = useCredentials()
+    const { handleLogout, credentials } = useCredentials()
+
+    const isLogged = credentials.jwt
 
     return (
         <LayoutFlex
@@ -41,12 +40,21 @@ export const NavBar = () => {
                     style={{ cursor: 'pointer', width: '5rem' }}
                     onClick={() => handleNavigateTo('/app/dashboard', Router)}
                 />
-                <ButtonDefaultContrast
-                    style={{ maxWidth: '5rem' }}
-                    onClick={handleLogout}
-                >
-                    SAIR
-                </ButtonDefaultContrast>
+                {isLogged ? (
+                    <ButtonDefaultContrast
+                        style={{ padding: '1rem 0', maxWidth: '6rem' }}
+                        onClick={handleLogout}
+                    >
+                        SAIR
+                    </ButtonDefaultContrast>
+                ) : (
+                    <ButtonDefaultContrast
+                        style={{ padding: '1rem 0', maxWidth: '6rem' }}
+                        onClick={() => Router.push('/app')}
+                    >
+                        ENTRAR
+                    </ButtonDefaultContrast>
+                )}
             </LayoutFlexMobileNavBar>
         </LayoutFlex>
     )

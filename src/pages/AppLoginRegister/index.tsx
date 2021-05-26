@@ -13,6 +13,7 @@ import {
 import { InputText } from '../../design/components/input'
 import { ButtonDefault } from '../../design/components/button'
 import { Theme } from '../../design/theme'
+import { TemplateAppLoginRegisterSection } from '../../design/components/templates'
 
 export const AppLoginRegisterPage = () => {
     // UI STATE
@@ -46,6 +47,14 @@ export const AppLoginRegisterPage = () => {
         identifier: loginIdentifier,
         password: loginPassword
     }
+
+    const [isLoginDataValid, setLoginDataValid] = useState(false)
+
+    useEffect(() => {
+        if (loginData.identifier.length < 6 || loginData.password.length < 6)
+            return setLoginDataValid(false)
+        setLoginDataValid(true)
+    }, [loginData])
 
     const handleLogin = async (e: any) => {
         e.preventDefault()
@@ -83,6 +92,18 @@ export const AppLoginRegisterPage = () => {
         password: registerPassword
     }
 
+    const [isRegisterDataValid, setRegisterDataValid] = useState(false)
+
+    useEffect(() => {
+        if (
+            registerData.name.length < 6 ||
+            registerData.username.length < 6 ||
+            registerData.email.length < 6 ||
+            registerData.password.length < 6
+        )
+            return setRegisterDataValid(false)
+        setRegisterDataValid(true)
+    }, [registerData])
     // console.log('REGISTER DATA', registerData)
 
     const handleRegister = async (e: any) => {
@@ -113,9 +134,9 @@ export const AppLoginRegisterPage = () => {
         }
     }
 
-    return (
-        <LayoutFlex as="main" style={{ width: '100%', minHeight: '100vh' }}>
-            {appPage === 'login' && (
+    if (appPage === 'login')
+        return (
+            <TemplateAppLoginRegisterSection as="main">
                 <LayoutFlex
                     as="section"
                     style={{
@@ -170,6 +191,7 @@ export const AppLoginRegisterPage = () => {
                         </TextLabel>
 
                         <ButtonDefault
+                            disabled={isLoginDataValid ? false : true}
                             style={{ marginTop: '.5rem' }}
                             onClick={handleLogin}
                         >
@@ -190,9 +212,12 @@ export const AppLoginRegisterPage = () => {
                         </LayoutFlex>
                     </LayoutFlex>
                 </LayoutFlex>
-            )}
+            </TemplateAppLoginRegisterSection>
+        )
 
-            {appPage === 'register' && (
+    if (appPage === 'register')
+        return (
+            <TemplateAppLoginRegisterSection as="main">
                 <LayoutFlex
                     as="section"
                     style={{
@@ -227,7 +252,7 @@ export const AppLoginRegisterPage = () => {
                             Nome
                             <InputText
                                 type="text"
-                                placeholder="ex: Rafael Fischer"
+                                placeholder="ex: Rafael Fischer (min. 6 caracteres)"
                                 value={registerName}
                                 onChange={(e) =>
                                     setRegisterName(e.target.value)
@@ -239,7 +264,7 @@ export const AppLoginRegisterPage = () => {
                             Usuário
                             <InputText
                                 type="text"
-                                placeholder="ex: rafael"
+                                placeholder="ex: rafael (min. 6 caracteres)"
                                 value={registerUsername}
                                 onChange={(e) =>
                                     setRegisterUsername(e.target.value)
@@ -251,7 +276,7 @@ export const AppLoginRegisterPage = () => {
                             Email
                             <InputText
                                 type="email"
-                                placeholder="ex: rafael@gmail.com"
+                                placeholder="ex: rafael@gmail.com (min. 6 caracteres)"
                                 value={registerEmail}
                                 onChange={(e) =>
                                     setRegisterEmail(e.target.value)
@@ -263,7 +288,7 @@ export const AppLoginRegisterPage = () => {
                             Senha
                             <InputText
                                 type="password"
-                                placeholder="Min. 6 caracteres"
+                                placeholder="(min. 6 caracteres)"
                                 value={registerPassword}
                                 onChange={(e) =>
                                     setRegisterPassword(e.target.value)
@@ -272,6 +297,7 @@ export const AppLoginRegisterPage = () => {
                         </TextLabel>
 
                         <ButtonDefault
+                            disabled={isRegisterDataValid ? false : true}
                             style={{ marginTop: '.5rem' }}
                             onClick={handleRegister}
                         >
@@ -292,9 +318,13 @@ export const AppLoginRegisterPage = () => {
                         </LayoutFlex>
                     </LayoutFlex>
                 </LayoutFlex>
-            )}
+            </TemplateAppLoginRegisterSection>
+        )
 
-            {appPage === 'loading' && <LayoutFlex>Carregando...</LayoutFlex>}
-        </LayoutFlex>
-    )
+    if (appPage === 'loading')
+        return (
+            <TemplateAppLoginRegisterSection as="main">
+                <LayoutFlex>Carregando...</LayoutFlex>
+            </TemplateAppLoginRegisterSection>
+        )
 }

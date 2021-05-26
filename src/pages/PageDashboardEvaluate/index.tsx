@@ -51,35 +51,46 @@ export const PageDashboardEvaluate = () => {
                         <TextSubTitle
                             style={{
                                 padding: '1rem 0',
-                                letterSpacing: '.1rem'
+                                letterSpacing: '.1rem',
+                                fontWeight: 'bold'
                             }}
                         >
                             SELECIONE UM PROJETO PARA AVALIAR
                         </TextSubTitle>
-                        <LayoutGridResponsive>
-                            {referenceProjects.length ? (
-                                referenceProjects.map((reference) => (
+                        {referenceProjects.length ? (
+                            <LayoutGridResponsive>
+                                {referenceProjects.map((reference) => (
                                     <ProjectCard
                                         key={reference.id}
                                         project={reference}
                                         href={`/app/dashboard/evaluate/${reference.slug}`}
                                     />
-                                ))
-                            ) : (
-                                <LayoutFlex
+                                ))}
+                            </LayoutGridResponsive>
+                        ) : (
+                            <LayoutFlex
+                                style={{
+                                    flexDirection: 'column',
+                                    height: '60vh',
+                                    width: '100%',
+                                    gap: '1rem'
+                                }}
+                            >
+                                <TextSubTitle style={{ fontWeight: 'bold' }}>
+                                    Obrigado!
+                                </TextSubTitle>
+                                <TextParagraph
                                     style={{
-                                        background: `${Theme.colors.constrastSecondary}`,
-                                        height: '20vh',
-                                        padding: '1rem'
+                                        maxWidth: '15rem',
+                                        textAlign: 'center'
                                     }}
                                 >
-                                    <TextParagraph>
-                                        Você já avaliou todos os projetos!
-                                        Obrigado
-                                    </TextParagraph>
-                                </LayoutFlex>
-                            )}
-                        </LayoutGridResponsive>
+                                    Você já avaliou todos os projetos que nossa
+                                    inteligência artificial utiliza para prever
+                                    as experiências arquitetônicas.
+                                </TextParagraph>
+                            </LayoutFlex>
+                        )}
                     </TemplateDashboardSection>
                 </TemplateDashboardMainScrollSection>
             </ContainerDashboardMainSection>

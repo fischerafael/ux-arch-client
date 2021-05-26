@@ -1,6 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-const Button = styled.button`
+interface PropsButton {
+    disabled?: boolean
+}
+
+const Button = styled.button<PropsButton>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,6 +19,14 @@ const Button = styled.button`
     padding: 0 2rem;
     width: 100%;
 `
+const disabledButton = css`
+    cursor: not-allowed;
+    background: ${(props) => props.theme.colors.grey};
+    &:hover {
+        background: ${(props) => props.theme.colors.grey};
+    }
+`
+
 export const ButtonDefault = styled(Button)`
     background: ${(props) => props.theme.colors.main};
     color: ${(props) => props.theme.colors.contrast};
@@ -22,6 +34,7 @@ export const ButtonDefault = styled(Button)`
         color: ${(props) => props.theme.colors.contrast};
         background: ${(props) => props.theme.colors.primary};
     }
+    ${(props) => props.disabled && disabledButton}
 `
 export const ButtonDefaultContrast = styled(Button)`
     background: ${(props) => props.theme.colors.contrast};
@@ -30,6 +43,7 @@ export const ButtonDefaultContrast = styled(Button)`
         color: ${(props) => props.theme.colors.contrast};
         background: ${(props) => props.theme.colors.primary};
     }
+    ${(props) => props.disabled && disabledButton}
 `
 export const ButtonGhost = styled(Button)`
     background: transparent;
@@ -37,4 +51,5 @@ export const ButtonGhost = styled(Button)`
     &:hover {
         color: ${(props) => props.theme.colors.primary};
     }
+    ${(props) => props.disabled && disabledButton}
 `
