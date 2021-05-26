@@ -3,14 +3,14 @@ import Router from 'next/router'
 import { NavBar } from '../../components/App/NavBar'
 import { ButtonDefault } from '../../design/components/button'
 import { ContainerBlogMainSection } from '../../design/components/container'
-import {
-    LayoutFlex,
-    LayoutGridResponsive
-} from '../../design/components/layout'
+
 import { TemplateBlogMainScrollSection } from '../../design/components/templates'
 import { TextParagraph, TextSubTitle } from '../../design/components/text'
+import { useWakeUpAPI } from '../../hooks/useWakeUpAPI'
 
 export const ResearchPage = () => {
+    useWakeUpAPI()
+
     return (
         <>
             <NavBar />

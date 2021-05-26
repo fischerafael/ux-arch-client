@@ -8,15 +8,10 @@ import {
 } from '../../design/components/button'
 import { LayoutFlex } from '../../design/components/layout'
 import { TextSubTitle, TextTitle } from '../../design/components/text'
-import { api } from '../../services/config/api'
+import { useWakeUpAPI } from '../../hooks/useWakeUpAPI'
 
 export const HomePage = () => {
-    useEffect(() => {
-        ;(async function () {
-            const { status } = await api.get('/')
-            console.log('WAKE UP API CALL STATUS', status)
-        })()
-    }, [])
+    useWakeUpAPI()
 
     const handleNavigateToLogin = () => {
         Router.push(`/app?state=login`)
