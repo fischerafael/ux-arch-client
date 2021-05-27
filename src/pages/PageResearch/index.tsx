@@ -55,7 +55,9 @@ export const ResearchPage = () => {
                         na plataforma. É rápido e fácil!
                     </TextParagraph>
                     <ButtonDefault
-                        onClick={() => Router.push('/app?state=register')}
+                        onClick={() =>
+                            Router.push('/app?state=register&research=true')
+                        }
                         style={{ minHeight: '3rem' }}
                     >
                         Ajudar no Ux Arch

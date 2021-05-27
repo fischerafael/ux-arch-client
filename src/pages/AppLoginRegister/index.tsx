@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Router from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { useCredentials } from '../../context/CredentialsContext'
 import { api } from '../../services/config/api'
 
@@ -18,6 +18,9 @@ import { TemplateAppLoginRegisterSection } from '../../design/components/templat
 export const AppLoginRegisterPage = () => {
     // UI STATE
     const [appPage, setAppPage] = useState('login')
+    const [isResearchPage, setResearchPage] = useState(false)
+
+    console.log('URL PAGE STATE', { appPage, isResearchPage })
 
     const handleSwitchPage = () => {
         if (appPage === 'register') setAppPage('login')
@@ -28,9 +31,9 @@ export const AppLoginRegisterPage = () => {
         const { query } = Router
         if (query.state) {
             const pageState = query.state as string
-
-            console.log('PAGE STATE', pageState)
+            const isResearch = !!query.research
             setAppPage(pageState)
+            setResearchPage(isResearch)
         }
     }, [])
 
@@ -122,6 +125,7 @@ export const AppLoginRegisterPage = () => {
                 jwt: data.jwt,
                 name: data.user.name
             })
+            if (isResearchPage) return Router.push('/app/dashboard/evaluate')
             Router.push('/app/dashboard')
         } catch (error) {
             console.log('LOGIN ERROR', error)
