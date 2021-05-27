@@ -146,7 +146,9 @@ export const AppLoginRegisterPage = () => {
                     style={{
                         flexDirection: 'column',
                         gap: '1rem',
-                        padding: '1rem'
+                        padding: '1rem',
+                        width: '100%',
+                        maxWidth: `${Theme.width.extraSmall}`
                     }}
                 >
                     <LayoutFlex
@@ -156,9 +158,7 @@ export const AppLoginRegisterPage = () => {
                         style={{ maxWidth: '4rem' }}
                     />
 
-                    <TextSubTitle
-                        style={{ width: `${Theme.width.extraSmall}` }}
-                    >
+                    <TextSubTitle>
                         Olá! Faça o login para continuar.
                     </TextSubTitle>
 
@@ -227,7 +227,9 @@ export const AppLoginRegisterPage = () => {
                     style={{
                         flexDirection: 'column',
                         gap: '1rem',
-                        padding: '1rem'
+                        padding: '1rem',
+                        width: '100%',
+                        maxWidth: `${Theme.width.extraSmall}`
                     }}
                 >
                     <LayoutFlex
@@ -237,9 +239,7 @@ export const AppLoginRegisterPage = () => {
                         style={{ maxWidth: '4rem' }}
                     />
 
-                    <TextSubTitle
-                        style={{ width: `${Theme.width.extraSmall}` }}
-                    >
+                    <TextSubTitle style={{}}>
                         Olá! Antes de continuarmos, preencha os campos a seguir
                         para poder acessar o Ux Arch novamente no futuro.
                     </TextSubTitle>

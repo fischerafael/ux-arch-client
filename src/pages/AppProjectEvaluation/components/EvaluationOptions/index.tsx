@@ -39,7 +39,7 @@ export const EvaluationOptions = ({ option, onClick, ...rest }: Props) => {
                     <TextParagraph
                         style={{
                             fontWeight: 'bold',
-                            fontSize: '.5rem',
+                            fontSize: '.65rem',
                             lineHeight: '1'
                         }}
                     >

@@ -14,6 +14,7 @@ import { TextParagraph } from '../../design/components/text'
 import { evaluationOptions } from '../../entities/Evaluation'
 import { EvaluationOptions } from './components/EvaluationOptions'
 import { ButtonDefault } from '../../design/components/button'
+import { ProjectContext } from './components/ProjectContext'
 
 interface Props {
     project: IProjects
@@ -98,18 +99,27 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                     alignItems: 'flex-start'
                 }}
             >
-                <DisplayImage
-                    src={project.thumbnail}
-                    alt={project.name}
-                    style={{ width: '100%', height: '40vh' }}
-                />
-
                 <Status current={screen} total={totalScreens} />
+                <LayoutFlex
+                    style={{ flexDirection: 'column', position: 'relative' }}
+                >
+                    <DisplayImage
+                        src={project.thumbnail}
+                        alt={project.name}
+                        style={{ width: '100%', height: '40vh' }}
+                    />
+                    <ProjectContext
+                        description="Área externa em frente ao museu"
+                        name="MASP"
+                        location="São Paulo, Brasil"
+                    />
+                </LayoutFlex>
 
                 {screen === 1 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como seria a experiência de DESCANSAR nesse local?
+                            Como seria a experiência de DESCANSAR nesse
+                            ambiente?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -130,7 +140,7 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                 {screen === 2 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como seria a experiência de ESTUDAR nesse local?
+                            Como seria a experiência de ESTUDAR nesse ambiente?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -152,7 +162,7 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
                             Como seria a experiência de realizar alguma
-                            atividade LAZER nesse local?
+                            atividade LAZER nesse ambiente?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -173,7 +183,8 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                 {screen === 4 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Como seria a experiência de TRABALHAR nesse local?
+                            Como seria a experiência de TRABALHAR nesse
+                            ambiente?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -195,7 +206,7 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
                             Como seria a experiência de ser OBRIGADO a ir nesse
-                            local?
+                            ambiente?
                         </TextParagraph>
                         <LayoutGridAlternatives>
                             {evaluationOptions.map((option) => (
@@ -216,7 +227,7 @@ export const AppProjectEvaluation = ({ project }: Props) => {
                 {screen === 6 && (
                     <>
                         <TextParagraph style={{ padding: '1rem 0' }}>
-                            Você já esteve nesse local?
+                            Você já esteve nesse ambiente?
                         </TextParagraph>
                         <LayoutFlex style={{ width: '100%', gap: '1rem' }}>
                             <LayoutFlex
